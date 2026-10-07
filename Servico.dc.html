@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Frente de serviço — Oliveira Contabilidade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=Mulish:wght@400;500;600&amp;display=swap"></link>
+  <style>html,body{margin:0;background:#FAF8F3;color:#121A16;-webkit-font-smoothing:antialiased;} *{box-sizing:border-box;} a{color:#00431C;} a:hover{color:#002A14;} ::selection{background:#00431C;color:#F3F0E8;}</style>
+</helmet>
+<div ref="{{ rootRef }}" style="background:#FAF8F3; overflow-x:clip;">
+  <dc-import name="Site Header" theme="light" active="servicos" hint-size="100%,0px"></dc-import>
+
+  <section data-screen-label="Serviço · Abertura" style="max-width:1440px; margin:0 auto; padding:clamp(150px,20vh,220px) clamp(20px,4vw,56px) clamp(56px,7vw,96px);">
+    <nav data-reveal="fade" data-delay="200" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:clamp(56px,7vw,96px);">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="6">
+        <a href="{{ t.href }}" style="font-family:'Mulish', sans-serif; font-weight:500; font-size:14px; text-decoration:none; padding:10px 18px; border-radius:999px; border:1px solid {{ t.bd }}; background:{{ t.bg }}; color:{{ t.fg }}; transition:background .4s, color .4s;" style-hover="border-color:#00431C;">{{ t.s }}</a>
+      </sc-for>
+    </nav>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr)); gap:clamp(40px,6vw,96px); align-items:end;">
+      <div>
+        <div data-swap="1" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#00431C; margin-bottom:32px; display:flex; gap:18px; align-items:center;"><span>Frente {{ cur.n }} / 06</span><span style="width:56px; height:1px; background:#00431C;"></span></div>
+        <h1 data-swap="1" style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(56px,7.6vw,128px); line-height:.95; letter-spacing:-.02em; color:#00431C; text-wrap:balance;">{{ cur.s }}</h1>
+      </div>
+      <p data-swap="1" style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-style:italic; font-size:clamp(26px,2.4vw,34px); line-height:1.25; color:#00431C; max-width:520px; text-wrap:pretty;">{{ cur.what }}</p>
+    </div>
+  </section>
+
+  <section data-screen-label="Serviço · Imagem" style="padding:0 clamp(20px,4vw,56px);">
+    <div data-reveal="wipe" data-dur="1700" style="max-width:1440px; margin:0 auto; position:relative; aspect-ratio:16/7; min-height:320px; overflow:hidden; background:#002A14;">
+      <img src="{{ cur.img }}" alt="" data-swap="1" data-parallax="-0.1" style="position:absolute; left:0; top:-10%; width:100%; height:120%; object-fit:cover;"></img>
+      <div style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(0,42,20,.55), rgba(0,42,20,0) 60%);"></div>
+    </div>
+  </section>
+
+  <section data-screen-label="Serviço · Problema" style="max-width:1440px; margin:0 auto; padding:clamp(110px,13vw,180px) clamp(20px,4vw,56px);">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr)); gap:clamp(48px,7vw,120px);">
+      <div>
+        <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#00431C; margin-bottom:28px;" data-reveal="fade">(01) &#160;O problema</div>
+        <p data-swap="1" data-reveal="up" style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(34px,3.6vw,56px); line-height:1.14; letter-spacing:-.01em; color:#00431C; text-wrap:pretty;">{{ cur.prob }}</p>
+      </div>
+      <div style="display:flex; flex-direction:column; justify-content:flex-end;">
+        <div data-reveal="up" data-delay="150" style="background:#F3F0E8; padding:clamp(28px,3.5vw,48px); border-top:2px solid #00431C;">
+          <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#00431C; margin-bottom:20px;">Quando procurar</div>
+          <p data-swap="1" style="margin:0; font-family:'Mulish', sans-serif; font-size:clamp(18px,1.5vw,21px); line-height:1.6; color:#121A16; text-wrap:pretty;">{{ cur.when }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Serviço · Etapas" style="background:#00431C; color:#F3F0E8; padding:clamp(110px,13vw,180px) clamp(20px,4vw,56px); position:relative; overflow:hidden;">
+    <img src="assets/ramo.png" alt="" style="position:absolute; right:-10%; top:-10%; width:min(48vw,640px); opacity:.1; pointer-events:none;" data-parallax="-0.1"></img>
+    <div style="position:relative; max-width:1440px; margin:0 auto;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr)); gap:48px; align-items:end; margin-bottom:clamp(64px,8vw,104px);">
+        <div>
+          <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#C9D2BC; margin-bottom:28px;" data-reveal="fade">(02) &#160;Entregas e etapas</div>
+          <h2 style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(44px,5.6vw,88px); line-height:1; letter-spacing:-.02em;">
+            <span style="display:block; overflow:hidden;"><span data-reveal="rise" style="display:block;">O que o trabalho</span></span>
+            <span style="display:block; overflow:hidden; padding-bottom:.08em;"><span data-reveal="rise" data-delay="120" style="display:block; font-style:italic; color:#C9D2BC;">pode incluir.</span></span>
+          </h2>
+        </div>
+        <p data-reveal="up" data-delay="200" style="margin:0; font-family:'Mulish', sans-serif; font-size:15px; line-height:1.7; color:rgba(243,240,232,.7); max-width:400px; justify-self:end;">Escopo, periodicidade e prazos são definidos em proposta, após análise do caso.</p>
+      </div>
+      <div data-draw-box="1" style="position:relative;">
+        <div style="height:1px; background:rgba(243,240,232,.2);"></div>
+        <div data-draw="x" style="position:absolute; top:0; left:0; right:0; height:1px; background:#C9D2BC; transform-origin:0 50%; scale:0 1;"></div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr));">
+          <sc-for list="{{ cur.steps }}" as="st" hint-placeholder-count="4">
+            <div data-step="1" style="position:relative; padding:44px 32px 0 0; transition:opacity .6s;">
+              <span style="position:absolute; top:-5px; left:0; width:9px; height:9px; border-radius:50%; background:#C9D2BC;"></span>
+              <div style="font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(56px,5vw,80px); line-height:.9; color:#C9D2BC; margin-bottom:24px;">{{ st.n }}</div>
+              <p data-swap="1" style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:400; font-size:clamp(22px,2vw,26px); line-height:1.3; max-width:280px;">{{ st.t }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Serviço · Resultado" style="position:relative; overflow:hidden; padding:clamp(130px,16vw,220px) clamp(20px,4vw,56px); text-align:center;">
+    <img src="assets/textura-clara.png" alt="" data-breathe="26000" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"></img>
+    <div style="position:absolute; inset:0; background:radial-gradient(ellipse at center, rgba(250,248,243,.94) 0%, rgba(250,248,243,.6) 60%, rgba(250,248,243,.25) 100%);"></div>
+    <div style="position:relative; max-width:1040px; margin:0 auto;">
+      <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#00431C; margin-bottom:36px;" data-reveal="fade">(03) &#160;Resultado esperado</div>
+      <p data-swap="1" data-reveal="up" style="margin:0 0 56px; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(40px,4.4vw,68px); line-height:1.08; letter-spacing:-.02em; color:#00431C; text-wrap:balance;">{{ cur.res }}</p>
+      <div data-reveal="up" data-delay="200" style="display:flex; flex-wrap:wrap; justify-content:center; gap:14px;">
+        <a href="{{ cur.contact }}" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; color:#F3F0E8; background:#00431C; padding:20px 30px 18px; border-radius:999px; transition:transform .4s;" style-hover="transform:translateY(-3px); color:#F3F0E8;">{{ cur.cta }}</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Serviço · Próxima" style="background:#002A14;">
+    <a href="{{ next.href }}" style="display:block; max-width:1440px; margin:0 auto; padding:clamp(64px,8vw,112px) clamp(20px,4vw,56px); text-decoration:none; color:#F3F0E8;" style-hover="color:#C9D2BC;">
+      <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#9DAA8C; margin-bottom:24px;">Próxima frente · {{ next.n }}</div>
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:32px;">
+        <span style="font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(44px,5.6vw,88px); line-height:1; letter-spacing:-.02em; transition:color .4s;">{{ next.s }}</span>
+        <span style="width:clamp(64px,7vw,96px); aspect-ratio:1; border-radius:50%; border:1px solid rgba(243,240,232,.4); display:flex; align-items:center; justify-content:center; font-size:24px; flex:none;">→</span>
+      </div>
+    </a>
+  </section>
+
+  <dc-import name="Site Footer" hint-size="100%,640px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { id: 'constituicao' };
+  componentDidMount() {
+    this.read = () => { const h = (location.hash || '').slice(1); if (this.data[h] && h !== this.state.id) this.setState({ id: h }); };
+    this.onHash = () => { this.read(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+    addEventListener('hashchange', this.onHash); this.read();
+    import('./motion.js').then(m => { m.initMotion(); setTimeout(() => m.initMotion(), 600); });
+  }
+  componentWillUnmount() { removeEventListener('hashchange', this.onHash); }
+  componentDidUpdate(_, ps) {
+    if (ps.id !== this.state.id && this.root) this.root.querySelectorAll('[data-swap]').forEach((n, i) => n.animate([{ opacity: 0, filter: 'blur(10px)', translate: '0 20px' }, { opacity: 1, filter: 'blur(0)', translate: '0 0' }], { duration: 1000, delay: i * 40, easing: 'cubic-bezier(.16,.84,.24,1)', fill: 'backwards' }));
+  }
+  data = {
+    constituicao: { s: 'Constituição de Empresas', img: 'assets/foto-50.jpg', what: 'Abrir a empresa com estrutura societária, atividade e regime adequados ao plano de negócio.', prob: 'Escolhas iniciais feitas no automático — estrutura societária, CNAE e regime — custam caro em tributos e retrabalho societário por anos.', when: 'Quando os sócios decidiram abrir a empresa, ou quando a atividade real já não corresponde ao que foi registrado.', steps: ['Leitura da atividade e do faturamento previsto.', 'Orientação de enquadramento e estrutura societária.', 'Registro, licenças e alvarás.', 'Entrega do calendário de obrigações do primeiro ano.'], res: 'Abertura concluída com enquadramento adequado e obrigações mapeadas desde o primeiro mês.', cta: 'Falar sobre abertura de empresa' },
+    tributario: { s: 'Tributário Empresarial', img: 'assets/foto-11.jpg', what: 'Entender a carga tributária antes de decidir, com o efeito no caixa estimado.', prob: 'Decidir entre regimes e estruturas sem visibilidade do efeito no caixa dos próximos exercícios.', when: 'Quando a empresa muda de faixa de faturamento, entra em nova operação ou a carga tributária passa a surpreender a cada mês.', steps: ['Revisão das operações e obrigações atuais.', 'Simulação de cenários por regime.', 'Apontamento de créditos e riscos.', 'Registro por escrito das premissas de cada recomendação.'], res: 'Decisão tributária documentada, com efeito estimado no caixa antes de ser adotada.', cta: 'Revisar meu regime tributário' },
+    contabeis: { s: 'Serviços Contábeis', img: 'assets/foto-65.jpg', what: 'Ter demonstrações confiáveis e comentadas para decidir com base em números.', prob: 'Sem demonstrações confiáveis e comentadas, a gestão decide por intuição — e o balanço não conversa com o que se vê no caixa.', when: 'Quando o fechamento atrasa, quando os números não fecham com a operação ou quando é preciso apresentar resultados a terceiros.', steps: ['Organização da rotina contábil.', 'Conciliação de contas.', 'Fechamento mensal com conferência.', 'Reunião de leitura do resultado em linguagem de gestão.'], res: 'Fechamento mensal previsível e demonstrações que o gestor entende e usa.', cta: 'Organizar minha contabilidade' },
+    rh: { s: 'Recursos Humanos', img: 'assets/foto-45.jpg', what: 'Cumprir a rotina trabalhista no calendário, sem consumir o tempo de quem gere o negócio.', prob: 'Prazos de folha e obrigações acessórias não perdoam improviso, e a rotina de pessoal passa a ocupar o dia do dono.', when: 'Quando a equipe cresce, quando há admissões e desligamentos frequentes ou quando surgem dúvidas trabalhistas recorrentes.', steps: ['Assunção da folha e dos eventos de pessoal.', 'Admissões, férias e rescisões.', 'Entregas acessórias no prazo.', 'Orientação ao gestor antes de cada decisão.'], res: 'Rotina de pessoal cumprida no calendário, com o gestor liberado para o negócio.', cta: 'Terceirizar a folha e o pessoal' },
+    escrituracao: { s: 'Escrituração Contábil', img: 'assets/foto-60.jpg', what: 'Regularizar o que está pendente sem travar a operação do presente.', prob: 'Documentos acumulados e lançamentos em atraso impedem apresentar demonstrações atualizadas quando alguém pede.', when: 'Quando um banco, um sócio ou um órgão pede documentação atualizada e a escrituração não está em dia.', steps: ['Diagnóstico do que está pendente.', 'Definição da ordem de recuperação.', 'Escrituração dos livros.', 'Implantação de fluxo de documentos.'], res: 'Escrituração em dia e documentação pronta quando alguém pedir.', cta: 'Pedir um diagnóstico' },
+    societario: { s: 'Direito Empresarial', img: 'assets/foto-26.jpg', what: 'Decidir societário com efeito contábil, tributário e jurídico avaliado em conjunto.', prob: 'Efeitos contábeis, tributários e societários costumam ser tratados em separado — e se contradizem.', when: 'Quando há entrada de sócio, sucessão familiar, reorganização societária ou contratos relevantes na mesa.', steps: ['Análise conjunta de contabilidade e jurídico.', 'Redação e revisão dos instrumentos.', 'Acompanhamento dos registros.', 'Formalização da decisão.'], res: 'Decisão societária tomada com efeito contábil, tributário e jurídico avaliado em conjunto.', cta: 'Conversar sobre societário' },
+  };
+  renderVals() {
+    const ids = Object.keys(this.data); const id = this.state.id; const i = ids.indexOf(id);
+    const d = this.data[id]; const ni = (i + 1) % ids.length;
+    return {
+      rootRef: el => { this.root = el; },
+      cur: { ...d, n: String(i + 1).padStart(2, '0'), contact: 'Contato.dc.html#' + id, steps: d.steps.map((t, k) => ({ t, n: String(k + 1).padStart(2, '0') })) },
+      next: { s: this.data[ids[ni]].s, n: String(ni + 1).padStart(2, '0'), href: '#' + ids[ni] },
+      tabs: ids.map(k => ({ s: this.data[k].s, href: '#' + k, bg: k === id ? '#00431C' : 'transparent', fg: k === id ? '#F3F0E8' : '#00431C', bd: k === id ? '#00431C' : 'rgba(0,67,28,.25)' })),
+    };
+  }
+}
+</script>
+</body>
+</html>

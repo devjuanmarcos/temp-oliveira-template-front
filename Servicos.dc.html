@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Serviços — Oliveira Contabilidade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=Mulish:wght@400;500;600&amp;display=swap"></link>
+  <style>html,body{margin:0;background:#FAF8F3;color:#121A16;-webkit-font-smoothing:antialiased;} *{box-sizing:border-box;} a{color:#00431C;} a:hover{color:#002A14;} ::selection{background:#00431C;color:#F3F0E8;}</style>
+</helmet>
+<div style="background:#FAF8F3; overflow-x:clip;">
+  <dc-import name="Site Header" theme="dark" active="servicos" hint-size="100%,0px"></dc-import>
+
+  <section data-screen-label="Serviços · Abertura" style="position:relative; min-height:92vh; background:#002A14; color:#F3F0E8; overflow:hidden; display:flex; align-items:flex-end;">
+    <div style="position:absolute; inset:0; overflow:hidden;"><img src="assets/foto-60.jpg" alt="" data-reveal="scale" data-dur="2600" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"></img></div>
+    <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,42,20,.6) 0%, rgba(0,42,20,.82) 55%, #002A14 100%);"></div>
+    <div style="position:relative; max-width:1440px; width:100%; margin:0 auto; padding:200px clamp(20px,4vw,56px) clamp(56px,7vw,96px);">
+      <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#C9D2BC; margin-bottom:36px;" data-reveal="fade" data-delay="300">Serviços</div>
+      <h1 style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(56px,8.4vw,140px); line-height:.95; letter-spacing:-.02em; max-width:1240px;">
+        <span style="display:block; overflow:hidden;"><span data-reveal="rise" data-delay="300" data-dur="1500" style="display:block;">Seis frentes,</span></span>
+        <span style="display:block; overflow:hidden; padding-bottom:.08em;"><span data-reveal="rise" data-delay="450" data-dur="1500" style="display:block; font-style:italic; color:#C9D2BC;">uma mesma leitura.</span></span>
+      </h1>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr)); gap:40px; margin-top:56px; align-items:end;">
+        <p data-reveal="up" data-delay="750" style="margin:0; font-family:'Mulish', sans-serif; font-size:clamp(18px,1.5vw,21px); line-height:1.6; color:rgba(243,240,232,.84); max-width:540px; text-wrap:pretty;">Abertura, tributos, contabilidade, pessoal, regularização e societário. Áreas distintas que, aqui, analisam o mesmo cliente em conjunto — para que uma decisão não desfaça a outra.</p>
+        <div data-reveal="fade" data-delay="1000" style="justify-self:end; font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:rgba(243,240,232,.6); display:flex; align-items:center; gap:14px;"><span style="width:1px; height:44px; background:rgba(243,240,232,.4);"></span>Role para encontrar a sua</div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Serviços · Diagnóstico" style="max-width:1440px; margin:0 auto; padding:clamp(110px,13vw,180px) clamp(20px,4vw,56px);">
+    <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#00431C; margin-bottom:28px;" data-reveal="fade">(01) &#160;Diagnóstico rápido</div>
+    <h2 style="margin:0 0 clamp(56px,7vw,96px); font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(44px,5.6vw,88px); line-height:1; letter-spacing:-.02em; color:#00431C; max-width:1000px;">
+      <span style="display:block; overflow:hidden;"><span data-reveal="rise" style="display:block;">Qual frase soa como</span></span>
+      <span style="display:block; overflow:hidden; padding-bottom:.08em;"><span data-reveal="rise" data-delay="120" style="display:block; font-style:italic;">a sua empresa hoje?</span></span>
+    </h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr)); gap:clamp(40px,5vw,80px); align-items:start;">
+      <div style="border-top:1px solid rgba(0,67,28,.2);">
+        <sc-for list="{{ items }}" as="it" hint-placeholder-count="6">
+          <button onClick="{{ it.pick }}" data-reveal="up" data-delay="{{ it.delay }}" style="width:100%; display:grid; grid-template-columns:48px minmax(0,1fr) 20px; gap:16px; align-items:center; text-align:left; background:{{ it.bg }}; color:{{ it.fg }}; border:0; border-bottom:1px solid rgba(0,67,28,.2); padding:28px 20px; cursor:pointer; transition:background .5s, color .5s;" style-hover="padding-left:28px;">
+            <span style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.2em; opacity:.7;">{{ it.n }}</span>
+            <span style="font-family:'Josefin Sans', sans-serif; font-weight:300; font-style:italic; font-size:clamp(22px,2vw,28px); line-height:1.25; text-wrap:pretty;">“{{ it.q }}”</span>
+            <span style="font-size:16px; opacity:{{ it.arrow }}; transition:opacity .4s;">→</span>
+          </button>
+        </sc-for>
+      </div>
+      <div style="position:sticky; top:110px;">
+        <div ref="{{ panelRef }}" style="background:#00431C; color:#F3F0E8; padding:clamp(32px,4vw,56px); position:relative; overflow:hidden; min-height:540px; display:flex; flex-direction:column; gap:32px;">
+          <img src="assets/ramo.png" alt="" style="position:absolute; right:-18%; bottom:-20%; width:70%; opacity:.12; pointer-events:none;"></img>
+          <div data-p="1" style="display:flex; justify-content:space-between; align-items:center; gap:16px; position:relative;">
+            <span style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.24em; text-transform:uppercase; color:#C9D2BC;">{{ cur.s }}</span>
+            <span style="font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:20px; color:#C9D2BC;">{{ cur.n }} / 06</span>
+          </div>
+          <div data-p="1" style="position:relative;">
+            <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:#9DAA8C; margin-bottom:12px;">O desafio</div>
+            <p style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(26px,2.4vw,34px); line-height:1.2; text-wrap:pretty;">{{ cur.d }}</p>
+          </div>
+          <div data-p="1" style="position:relative; height:1px; background:rgba(243,240,232,.2);"></div>
+          <div data-p="1" style="position:relative; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:28px;">
+            <div>
+              <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:#9DAA8C; margin-bottom:12px;">Como atuamos</div>
+              <p style="margin:0; font-family:'Mulish', sans-serif; font-size:16px; line-height:1.7; color:rgba(243,240,232,.86);">{{ cur.a }}</p>
+            </div>
+            <div>
+              <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:#9DAA8C; margin-bottom:12px;">O que se espera</div>
+              <p style="margin:0; font-family:'Mulish', sans-serif; font-size:16px; line-height:1.7; color:rgba(243,240,232,.86);">{{ cur.r }}</p>
+            </div>
+          </div>
+          <div data-p="1" style="position:relative; margin-top:auto; display:flex; flex-wrap:wrap; gap:12px;">
+            <a href="{{ cur.page }}" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.2em; text-transform:uppercase; text-decoration:none; color:#00431C; background:#F3F0E8; padding:18px 26px 16px; border-radius:999px;">Ver a frente completa</a>
+            <a href="{{ cur.contact }}" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.2em; text-transform:uppercase; text-decoration:none; color:#F3F0E8; border:1px solid rgba(243,240,232,.4); padding:17px 26px 15px; border-radius:999px;">{{ cur.cta }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Serviços · Índice" style="background:#F3F0E8; padding:clamp(100px,12vw,160px) clamp(20px,4vw,56px);">
+    <div style="max-width:1440px; margin:0 auto;">
+      <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#00431C; margin-bottom:clamp(40px,5vw,72px);" data-reveal="fade">(02) &#160;Índice das frentes</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr)); border-top:1px solid rgba(0,67,28,.2); border-left:1px solid rgba(0,67,28,.2);">
+        <sc-for list="{{ items }}" as="it" hint-placeholder-count="6">
+          <a href="{{ it.page }}" data-reveal="up" data-delay="{{ it.delay }}" style="position:relative; display:flex; flex-direction:column; justify-content:space-between; gap:72px; min-height:300px; padding:36px; border-right:1px solid rgba(0,67,28,.2); border-bottom:1px solid rgba(0,67,28,.2); text-decoration:none; color:#00431C; background:transparent; transition:background .6s, color .6s;" style-hover="background:#00431C; color:#F3F0E8;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px;">
+              <span style="font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:20px;">{{ it.n }}</span>
+              <span style="width:44px; height:44px; border-radius:50%; border:1px solid currentColor; display:flex; align-items:center; justify-content:center; font-size:16px;">↗</span>
+            </div>
+            <div>
+              <h3 style="margin:0 0 14px; font-family:'Josefin Sans', sans-serif; font-weight:400; font-size:clamp(26px,2.4vw,34px); line-height:1.15;">{{ it.s }}</h3>
+              <p style="margin:0; font-family:'Mulish', sans-serif; font-size:15px; line-height:1.6; opacity:.78;">{{ it.tag }}</p>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="metodo" data-screen-label="Serviços · Como trabalhamos" style="max-width:1440px; margin:0 auto; padding:clamp(120px,14vw,200px) clamp(20px,4vw,56px);">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr)); gap:clamp(48px,7vw,120px); align-items:start;">
+      <div style="position:sticky; top:130px;">
+        <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#00431C; margin-bottom:28px;" data-reveal="fade">(03) &#160;Como trabalhamos</div>
+        <h2 style="margin:0 0 32px; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(44px,5.6vw,88px); line-height:1; letter-spacing:-.02em; color:#00431C;">
+          <span style="display:block; overflow:hidden;"><span data-reveal="rise" style="display:block;">Por dentro</span></span>
+          <span style="display:block; overflow:hidden; padding-bottom:.08em;"><span data-reveal="rise" data-delay="120" style="display:block; font-style:italic;">do método.</span></span>
+        </h2>
+        <p data-reveal="up" data-delay="200" style="margin:0; font-family:'Mulish', sans-serif; font-size:clamp(18px,1.5vw,21px); line-height:1.6; color:#3D4A43; max-width:440px; text-wrap:pretty;">O mesmo percurso vale para qualquer frente. Muda o assunto; permanece a ordem das perguntas.</p>
+      </div>
+      <div data-draw-box="1" style="position:relative; padding-left:40px;">
+        <div style="position:absolute; left:0; top:0; bottom:0; width:1px; background:rgba(0,67,28,.15);"></div>
+        <div data-draw="y" style="position:absolute; left:0; top:0; bottom:0; width:1px; background:#00431C; transform-origin:50% 0; scale:1 0;"></div>
+        <sc-for list="{{ method }}" as="m" hint-placeholder-count="4">
+          <div data-step="1" style="position:relative; padding:0 0 72px; transition:opacity .6s;">
+            <span style="position:absolute; left:-45px; top:10px; width:11px; height:11px; border-radius:50%; background:#FAF8F3; border:1px solid #00431C;"></span>
+            <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.24em; text-transform:uppercase; color:#5B6B62; margin-bottom:16px;">Fase {{ m.n }}</div>
+            <h3 style="margin:0 0 18px; font-family:'Josefin Sans', sans-serif; font-weight:400; font-size:clamp(26px,2.4vw,34px); line-height:1.15; color:#00431C;">{{ m.t }}</h3>
+            <p style="margin:0 0 22px; font-family:'Mulish', sans-serif; font-size:16px; line-height:1.7; color:#3D4A43; max-width:560px;">{{ m.d }}</p>
+            <div style="display:inline-flex; flex-direction:column; gap:6px; padding:16px 20px; background:#F3F0E8;">
+              <span style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:#5B6B62;">{{ m.k }}</span>
+              <span style="font-family:'Josefin Sans', sans-serif; font-weight:400; font-size:20px; line-height:1.3; color:#00431C;">{{ m.o }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Serviços · Diferenciais" style="position:relative; overflow:hidden; background:#002A14; color:#F3F0E8; padding:clamp(110px,13vw,180px) clamp(20px,4vw,56px);">
+    <img src="assets/textura-profunda.png" alt="" data-breathe="30000" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.28;"></img>
+    <div style="position:relative; max-width:1440px; margin:0 auto;">
+      <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#C9D2BC; margin-bottom:clamp(48px,6vw,80px);" data-reveal="fade">(04) &#160;O que muda na prática</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr)); gap:clamp(32px,4vw,64px);">
+        <sc-for list="{{ diffs }}" as="d" hint-placeholder-count="3">
+          <div data-reveal="up" data-delay="{{ d.delay }}" style="border-top:1px solid rgba(243,240,232,.25); padding-top:32px;">
+            <div style="font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(56px,6vw,96px); line-height:.9; color:#C9D2BC; margin-bottom:28px;">+</div>
+            <h3 style="margin:0 0 16px; font-family:'Josefin Sans', sans-serif; font-weight:400; font-size:clamp(26px,2.4vw,34px); line-height:1.15;">{{ d.t }}</h3>
+            <p style="margin:0; font-family:'Mulish', sans-serif; font-size:16px; line-height:1.7; color:rgba(243,240,232,.78);">{{ d.d }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <p data-reveal="up" style="margin:clamp(64px,8vw,112px) 0 0; padding-top:28px; border-top:1px solid rgba(243,240,232,.18); font-family:'Mulish', sans-serif; font-size:15px; line-height:1.7; color:rgba(243,240,232,.66); max-width:640px;">Escopo, periodicidade e prazos são definidos em proposta, após análise do caso.</p>
+    </div>
+  </section>
+
+  <dc-import name="Site Footer" hint-size="100%,640px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sel: 0 };
+  componentDidMount() { import('./motion.js').then(m => { m.initMotion(); setTimeout(() => m.initMotion(), 600); }); }
+  componentDidUpdate(_, ps) {
+    if (ps.sel !== this.state.sel && this.panel) {
+      this.panel.querySelectorAll('[data-p]').forEach((n, i) => n.animate([{ opacity: 0, transform: 'translateY(24px)', filter: 'blur(6px)' }, { opacity: 1, transform: 'none', filter: 'blur(0)' }], { duration: 800, delay: i * 70, easing: 'cubic-bezier(.16,.84,.24,1)', fill: 'backwards' }));
+    }
+  }
+  renderVals() {
+    const D = [
+      ['constituicao', 'Constituição de Empresas', 'Vamos abrir a empresa. Por onde começamos?', 'Estrutura societária e regime escolhidos no automático custam caro depois.', 'Orientamos o enquadramento, conduzimos o registro e entregamos o calendário do primeiro ano.', 'Empresa aberta com enquadramento adequado e obrigações mapeadas.', 'Falar sobre abertura', 'Estrutura, CNAE, registro e licenças'],
+      ['tributario', 'Tributário Empresarial', 'A carga tributária surpreende todo mês.', 'Decidir entre regimes sem ver o efeito no caixa dos próximos exercícios.', 'Simulamos cenários por regime e registramos as premissas de cada recomendação.', 'Decisão tributária documentada antes de ser adotada.', 'Revisar meu regime', 'Regimes, cenários, créditos e riscos'],
+      ['contabeis', 'Serviços Contábeis', 'O balanço não conversa com o que eu vejo no caixa.', 'Sem demonstrações confiáveis e comentadas, a gestão decide por intuição.', 'Conciliamos contas, fechamos o mês com conferência e apresentamos o resultado em reunião.', 'Demonstrações e análises gerenciais prontas para decisão.', 'Organizar a contabilidade', 'Conciliação, fechamento e leitura gerencial'],
+      ['rh', 'Recursos Humanos', 'A equipe cresceu e a rotina trabalhista tomou o meu dia.', 'Prazos de folha e obrigações acessórias não perdoam improviso.', 'Assumimos folha, admissões, férias e rescisões, com orientação antes de cada decisão.', 'Rotina de pessoal em dia e gestor de volta ao negócio.', 'Terceirizar a folha', 'Folha, eventos de pessoal e acessórias'],
+      ['escrituracao', 'Escrituração Contábil', 'O banco pediu demonstrações atualizadas e estou em atraso.', 'Regularizar o passado sem travar a operação do presente.', 'Diagnosticamos pendências, recuperamos os lançamentos e implantamos um fluxo de documentos.', 'Escrituração em dia e documentação pronta quando pedirem.', 'Pedir diagnóstico', 'Diagnóstico, recuperação e livros em dia'],
+      ['societario', 'Direito Empresarial', 'Vai entrar um sócio novo na empresa.', 'Efeitos contábeis, tributários e societários tratados em separado se contradizem.', 'Colocamos contabilidade e jurídico na mesma análise e acompanhamos até o registro.', 'Decisão societária tomada com todos os efeitos avaliados.', 'Conversar sobre societário', 'Sócios, sucessão, contratos e registros'],
+    ];
+    const sel = this.state.sel;
+    const items = D.map(([id, s, q, d, a, r, cta, tag], i) => ({
+      id, s, q, d, a, r, cta, tag, n: String(i + 1).padStart(2, '0'), delay: i * 70,
+      page: 'Servico.dc.html#' + id, contact: 'Contato.dc.html#' + id,
+      bg: i === sel ? '#00431C' : 'transparent', fg: i === sel ? '#F3F0E8' : '#00431C', arrow: i === sel ? 1 : 0,
+      pick: () => this.setState({ sel: i }),
+    }));
+    return {
+      items, cur: items[sel],
+      panelRef: el => { this.panel = el; },
+      method: [
+        { n: 'I', t: 'Entender a operação', d: 'Conhecemos a realidade da empresa, sua atividade, estrutura, objetivos e próximos movimentos.', k: 'Leitura de apoio · Abertura', o: 'O que decidir antes de registrar a empresa.' },
+        { n: 'II', t: 'Organizar a rotina técnica', d: 'Estruturamos processos contábeis, fiscais, trabalhistas e societários conforme a legislação e a operação real.', k: 'Leitura de apoio · Rotina', o: 'Como ler o fechamento mensal da sua empresa.' },
+        { n: 'III', t: 'Ler os números', d: 'Transformamos demonstrações, conciliações e fechamentos em informação gerencial para controle e decisão.', k: 'Acompanhamento próximo', o: 'Conduzido diretamente com a Oliveira, em reunião.' },
+        { n: 'IV', t: 'Acompanhar as decisões', d: 'Mantemos proximidade com sócios e gestores, com responsabilidade técnica e continuidade de método.', k: 'Leitura de apoio · Sucessão', o: 'Empresa familiar: preparar a próxima geração.' },
+      ],
+      diffs: [
+        { t: 'Contábil e jurídico na mesma análise', d: 'Uma alteração societária não chega ao contrato sem antes passar pelo efeito tributário — e vice-versa.', delay: 0 },
+        { t: 'Premissas por escrito', d: 'Toda recomendação relevante vem acompanhada das hipóteses que a sustentam. Se o cenário mudar, sabemos o que revisar.', delay: 120 },
+        { t: 'Resultado lido em reunião', d: 'O fechamento não termina no envio do relatório. Termina quando o gestor entende o que mudou e por quê.', delay: 240 },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

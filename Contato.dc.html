@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Conte sua situação — Oliveira Contabilidade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=Mulish:wght@400;500;600&amp;display=swap"></link>
+  <style>html,body{margin:0;background:#002A14;color:#F3F0E8;-webkit-font-smoothing:antialiased;} *{box-sizing:border-box;} a{color:#C9D2BC;} a:hover{color:#F3F0E8;} ::selection{background:#C9D2BC;color:#002A14;} input::placeholder,textarea::placeholder{color:rgba(243,240,232,.28);} input:focus,textarea:focus,button:focus-visible{outline:none;}</style>
+</helmet>
+<div ref="{{ bgRef }}" onMouseMove="{{ onMove }}" style="position:relative; min-height:100vh; background:#002A14; color:#F3F0E8; overflow:hidden; display:flex; flex-direction:column;">
+  <img src="assets/textura-profunda.png" alt="" data-breathe="34000" style="position:absolute; inset:-4%; width:108%; height:108%; object-fit:cover; opacity:.2; pointer-events:none;"></img>
+  <div data-glow="1" style="position:absolute; width:70vmax; height:70vmax; left:0; top:0; border-radius:50%; background:radial-gradient(circle, rgba(201,210,188,.13) 0%, rgba(201,210,188,0) 62%); pointer-events:none; transition:transform 1.4s cubic-bezier(.16,.84,.24,1); transform:{{ glow }};"></div>
+  <div data-spin="90000" style="position:absolute; left:50%; top:50%; width:min(118vh,118vw); aspect-ratio:1; margin-left:calc(min(118vh,118vw) / -2); margin-top:calc(min(118vh,118vw) / -2); pointer-events:none; opacity:.14;">
+    <div style="position:absolute; inset:0; border:1px solid #C9D2BC; border-radius:50%;"></div>
+    <div style="position:absolute; inset:14%; border:1px dashed #C9D2BC; border-radius:50%;"></div>
+    <div style="position:absolute; left:50%; top:-2%; width:7px; height:7px; margin-left:-3px; border-radius:50%; background:#C9D2BC;"></div>
+  </div>
+
+  <header style="position:relative; z-index:3; display:flex; justify-content:space-between; align-items:center; gap:24px; padding:28px clamp(20px,4vw,56px);">
+    <a href="Home.dc.html"><img src="assets/logo-oliveira-branca.png" alt="Oliveira Contabilidade" style="height:28px; width:auto; display:block;"></img></a>
+    <div style="display:flex; align-items:center; gap:20px;">
+      <button onClick="{{ toggleMode }}" style="background:transparent; border:0; cursor:pointer; color:rgba(243,240,232,.72); font-family:'Mulish', sans-serif; font-size:14px; padding:8px 0; border-bottom:1px solid rgba(243,240,232,.25);" style-hover="color:#F3F0E8;">{{ modeLabel }}</button>
+      <a href="Home.dc.html" aria-label="Fechar" style="width:44px; height:44px; border-radius:50%; border:1px solid rgba(243,240,232,.3); display:flex; align-items:center; justify-content:center; color:#F3F0E8; text-decoration:none; font-family:'Mulish', sans-serif; font-size:18px;" style-hover="background:rgba(243,240,232,.1);">×</a>
+    </div>
+  </header>
+
+  <sc-if value="{{ guided }}" hint-placeholder-val="{{ true }}">
+    <div style="position:relative; z-index:2; padding:0 clamp(20px,4vw,56px);">
+      <div style="max-width:960px; margin:0 auto; display:flex; align-items:center; gap:18px; font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#9DAA8C;">
+        <span>{{ stepLabel }}</span>
+        <span style="flex:1; height:1px; background:rgba(243,240,232,.14); position:relative;"><span style="position:absolute; left:0; top:0; bottom:0; width:100%; background:#C9D2BC; transform-origin:0 50%; transform:{{ progress }}; transition:transform 1s cubic-bezier(.16,.84,.24,1);"></span></span>
+        <span>Conversa guiada</span>
+      </div>
+    </div>
+
+    <main style="position:relative; z-index:2; flex:1; display:flex; align-items:center; padding:clamp(40px,8vh,96px) clamp(20px,4vw,56px) clamp(56px,10vh,120px);">
+      <div ref="{{ stageRef }}" style="max-width:960px; width:100%; margin:0 auto;">
+        <sc-if value="{{ canBack }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ back }}" style="background:transparent; border:0; cursor:pointer; color:#9DAA8C; font-family:'Mulish', sans-serif; font-size:14px; padding:0; margin-bottom:36px; display:flex; align-items:center; gap:10px;" style-hover="color:#F3F0E8;">← Editar informação anterior</button>
+        </sc-if>
+        <h1 style="margin:0; min-height:2.3em; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(40px,5.2vw,80px); line-height:1.08; letter-spacing:-.02em; text-wrap:pretty;">{{ typed }}<span ref="{{ caretRef }}" style="display:inline-block; width:3px; height:.82em; margin-left:6px; background:#C9D2BC; vertical-align:-.06em;"></span></h1>
+
+        <div ref="{{ answerRef }}" style="margin-top:clamp(36px,5vh,56px); opacity:0;">
+          <sc-if value="{{ s0 }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; flex-wrap:wrap; gap:12px;">
+              <sc-for list="{{ subjects }}" as="sj" hint-placeholder-count="7">
+                <button data-chip="1" onClick="{{ sj.pick }}" style="font-family:'Mulish', sans-serif; font-weight:500; font-size:17px; color:{{ sj.fg }}; background:{{ sj.bg }}; border:1px solid rgba(243,240,232,.32); border-radius:999px; padding:16px 26px; cursor:pointer; display:flex; align-items:center; gap:12px; transition:background .35s, color .35s, transform .35s;" style-hover="background:#F3F0E8; color:#00431C; transform:translateY(-3px);"><span style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.16em; opacity:.6;">{{ sj.n }}</span>{{ sj.l }}</button>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ s1 }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; flex-direction:column; gap:28px;">
+              <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                <span style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:#9DAA8C; width:100%; margin-bottom:4px;">Toque para começar com uma frase</span>
+                <sc-for list="{{ quick }}" as="qk" hint-placeholder-count="3">
+                  <button data-chip="1" onClick="{{ qk.pick }}" style="font-family:'Josefin Sans', sans-serif; font-style:italic; font-weight:300; font-size:19px; color:#F3F0E8; background:rgba(243,240,232,.06); border:1px solid rgba(243,240,232,.2); border-radius:4px; padding:12px 18px; cursor:pointer; text-align:left; transition:background .35s, border-color .35s;" style-hover="background:rgba(243,240,232,.14); border-color:rgba(243,240,232,.5);">“{{ qk.t }}”</button>
+                </sc-for>
+              </div>
+              <textarea ref="{{ focusRef }}" value="{{ f.sit }}" onChange="{{ onSit }}" onKeyDown="{{ onKeyArea }}" rows="3" placeholder="Escreva sua situação..." style="width:100%; resize:none; background:transparent; border:0; border-bottom:1px solid rgba(243,240,232,.35); color:#F3F0E8; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(26px,2.6vw,38px); line-height:1.3; padding:8px 0 18px;"></textarea>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}">
+            <input ref="{{ focusRef }}" value="{{ f.nome }}" onChange="{{ onNome }}" onKeyDown="{{ onKey }}" placeholder="Seu nome" autoComplete="name" style="width:100%; background:transparent; border:0; border-bottom:1px solid rgba(243,240,232,.35); color:#F3F0E8; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(32px,3.6vw,56px); padding:8px 0 18px;"></input>
+          </sc-if>
+          <sc-if value="{{ s3 }}" hint-placeholder-val="{{ false }}">
+            <input ref="{{ focusRef }}" type="email" value="{{ f.email }}" onChange="{{ onEmail }}" onKeyDown="{{ onKey }}" placeholder="Seu melhor e-mail" autoComplete="email" style="width:100%; background:transparent; border:0; border-bottom:1px solid rgba(243,240,232,.35); color:#F3F0E8; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(32px,3.6vw,56px); padding:8px 0 18px;"></input>
+          </sc-if>
+          <sc-if value="{{ s4 }}" hint-placeholder-val="{{ false }}">
+            <input ref="{{ focusRef }}" type="tel" value="{{ f.tel }}" onChange="{{ onTel }}" onKeyDown="{{ onKey }}" placeholder="Telefone com DDD" autoComplete="tel" style="width:100%; background:transparent; border:0; border-bottom:1px solid rgba(243,240,232,.35); color:#F3F0E8; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(32px,3.6vw,56px); padding:8px 0 18px; font-variant-numeric:lining-nums;"></input>
+          </sc-if>
+
+          <sc-if value="{{ s5 }}" hint-placeholder-val="{{ false }}">
+            <div style="border-top:1px solid rgba(243,240,232,.18);">
+              <sc-for list="{{ review }}" as="rv" hint-placeholder-count="5">
+                <div data-chip="1" style="display:flex; flex-wrap:wrap; gap:8px 24px; align-items:baseline; padding:22px 0; border-bottom:1px solid rgba(243,240,232,.18);">
+                  <span style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:#9DAA8C; flex:0 0 160px;">{{ rv.k }}</span>
+                  <span style="font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(20px,1.8vw,26px); line-height:1.35; word-break:break-word; flex:1 1 260px; min-width:0;">{{ rv.v }}</span>
+                  <button onClick="{{ rv.edit }}" style="background:transparent; border:0; cursor:pointer; color:#C9D2BC; font-family:'Mulish', sans-serif; font-size:14px; padding:0;" style-hover="color:#F3F0E8;">Editar informação</button>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ s6 }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:32px; padding-top:32px; border-top:1px solid rgba(243,240,232,.18);">
+              <div data-chip="1" style="font-family:'Mulish', sans-serif; font-size:15px; line-height:1.75; color:rgba(243,240,232,.72);">
+                <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:#9DAA8C; margin-bottom:12px;">Próximo passo</div>
+                A mensagem segue para a pessoa certa da equipe. O retorno chega por {{ channel }}.
+              </div>
+              <div data-chip="1" style="font-family:'Mulish', sans-serif; font-size:15px; line-height:1.75; color:rgba(243,240,232,.72);">
+                <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:#9DAA8C; margin-bottom:12px;">Onde estamos</div>
+                Av. das Américas, 500, Bloco 22, salas 229/230<br></br>Barra da Tijuca, Rio de Janeiro/RJ
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ hasErr }}" hint-placeholder-val="{{ false }}">
+            <div ref="{{ errRef }}" role="alert" style="margin-top:18px; font-family:'Mulish', sans-serif; font-size:15px; color:#E8C9A8; display:flex; align-items:center; gap:10px;"><span style="width:6px; height:6px; border-radius:50%; background:#E8C9A8;"></span>{{ err }}</div>
+          </sc-if>
+
+          <sc-if value="{{ showCta }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; flex-wrap:wrap; align-items:center; gap:24px; margin-top:44px;">
+              <button onClick="{{ next }}" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:#00431C; background:#F3F0E8; border:0; padding:20px 30px 18px; border-radius:999px; cursor:pointer; display:flex; align-items:center; gap:14px; transition:transform .4s;" style-hover="transform:translateY(-3px);">{{ ctaLabel }} <span style="font-size:15px; letter-spacing:0;">→</span></button>
+              <sc-if value="{{ showHint }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Mulish', sans-serif; font-size:13px; color:rgba(243,240,232,.5);">ou pressione Enter ↵</span></sc-if>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ s6 }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:44px;">
+              <button onClick="{{ restart }}" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:#00431C; background:#F3F0E8; border:0; padding:20px 30px 18px; border-radius:999px; cursor:pointer;">Enviar outra situação</button>
+              <a href="Home.dc.html" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:#F3F0E8; text-decoration:none; border:1px solid rgba(243,240,232,.4); padding:19px 30px 17px; border-radius:999px;">Voltar ao início</a>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </main>
+  </sc-if>
+
+  <sc-if value="{{ full }}" hint-placeholder-val="{{ false }}">
+    <main ref="{{ fullRef }}" style="position:relative; z-index:2; flex:1; padding:clamp(32px,6vh,72px) clamp(20px,4vw,56px) clamp(64px,10vh,120px);">
+      <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr)); gap:clamp(40px,6vw,96px);">
+        <div data-chip="1">
+          <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#9DAA8C; margin-bottom:28px;">Formulário completo</div>
+          <h1 style="margin:0 0 28px; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(44px,5.6vw,88px); line-height:1; letter-spacing:-.02em;">Conte sua situação, <em style="color:#C9D2BC;">nós respondemos.</em></h1>
+          <p style="margin:0; font-family:'Mulish', sans-serif; font-size:clamp(18px,1.5vw,21px); line-height:1.6; color:rgba(243,240,232,.78); max-width:460px;">Explique o momento da sua empresa. Vamos entender o contexto e encaminhar sua mensagem para a pessoa certa da Oliveira.</p>
+        </div>
+        <sc-if value="{{ fullSent }}" hint-placeholder-val="{{ false }}">
+          <div data-chip="1" style="align-self:center; border-top:1px solid rgba(243,240,232,.25); padding-top:32px;">
+            <p style="margin:0 0 32px; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(26px,2.4vw,34px); line-height:1.25;">Recebemos sua mensagem. Vamos analisar o contexto e responder pelo canal informado.</p>
+            <button onClick="{{ toggleMode }}" style="background:transparent; border:0; cursor:pointer; color:#C9D2BC; font-family:'Mulish', sans-serif; font-size:15px; padding:0; border-bottom:1px solid #C9D2BC;">Voltar para a conversa guiada</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ fullOpen }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; flex-direction:column; gap:28px;">
+            <label data-chip="1" style="display:flex; flex-direction:column; gap:10px;"><span style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:#9DAA8C;">Nome</span><input value="{{ f.nome }}" onChange="{{ onNome }}" style="background:transparent; border:0; border-bottom:1px solid rgba(243,240,232,.35); color:#F3F0E8; font-family:'Mulish', sans-serif; font-size:19px; padding:10px 0 14px;"></input></label>
+            <label data-chip="1" style="display:flex; flex-direction:column; gap:10px;"><span style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:#9DAA8C;">E-mail ou telefone</span><input value="{{ f.canal }}" onChange="{{ onCanal }}" style="background:transparent; border:0; border-bottom:1px solid rgba(243,240,232,.35); color:#F3F0E8; font-family:'Mulish', sans-serif; font-size:19px; padding:10px 0 14px;"></input></label>
+            <div data-chip="1" style="display:flex; flex-direction:column; gap:14px;">
+              <span style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:#9DAA8C;">Assunto</span>
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                <sc-for list="{{ subjectsFull }}" as="sj" hint-placeholder-count="6">
+                  <button onClick="{{ sj.pick }}" style="font-family:'Mulish', sans-serif; font-size:14px; color:{{ sj.fg }}; background:{{ sj.bg }}; border:1px solid rgba(243,240,232,.3); border-radius:999px; padding:10px 16px; cursor:pointer; transition:background .3s, color .3s;">{{ sj.l }}</button>
+                </sc-for>
+              </div>
+            </div>
+            <label data-chip="1" style="display:flex; flex-direction:column; gap:10px;"><span style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:#9DAA8C;">Sua situação</span><textarea value="{{ f.sit }}" onChange="{{ onSit }}" rows="4" placeholder="Em poucas linhas, o que precisa resolver." style="resize:none; background:transparent; border:0; border-bottom:1px solid rgba(243,240,232,.35); color:#F3F0E8; font-family:'Mulish', sans-serif; font-size:19px; line-height:1.5; padding:10px 0 14px;"></textarea></label>
+            <sc-if value="{{ hasFullErr }}" hint-placeholder-val="{{ false }}"><div role="alert" style="font-family:'Mulish', sans-serif; font-size:15px; color:#E8C9A8;">{{ fullErr }}</div></sc-if>
+            <div data-chip="1"><button onClick="{{ sendFull }}" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:#00431C; background:#F3F0E8; border:0; padding:20px 30px 18px; border-radius:999px; cursor:pointer;">Enviar para a Oliveira</button></div>
+          </div>
+        </sc-if>
+      </div>
+    </main>
+  </sc-if>
+
+  <footer style="position:relative; z-index:2; display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; padding:0 clamp(20px,4vw,56px) 28px; font-family:'Mulish', sans-serif; font-size:12px; color:rgba(243,240,232,.42);">
+    <span>Seus dados são usados apenas para responder a esta mensagem.</span>
+    <span>Oliveira Contabilidade · Barra da Tijuca, RJ</span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  SUBJ = [
+    ['constituicao', 'Abrir uma empresa', 'Constituição de Empresas', ['Vamos abrir a empresa. Por onde começamos?', 'A atividade mudou e o registro não acompanhou.', 'Quero entender qual regime faz sentido para começar.']],
+    ['tributario', 'Impostos e regime', 'Tributário Empresarial', ['A carga tributária surpreende todo mês.', 'Mudamos de faixa de faturamento.', 'Vamos começar uma nova operação.']],
+    ['contabeis', 'Contabilidade e fechamento', 'Serviços Contábeis', ['O balanço não conversa com o que eu vejo no caixa.', 'O fechamento do mês sempre atrasa.', 'Preciso apresentar resultados a terceiros.']],
+    ['rh', 'Folha e pessoal', 'Recursos Humanos', ['A equipe cresceu e a rotina trabalhista tomou o meu dia.', 'Temos muitas admissões e desligamentos.', 'Surgem dúvidas trabalhistas toda semana.']],
+    ['escrituracao', 'Pendências e atrasos', 'Escrituração Contábil', ['O banco pediu demonstrações atualizadas e estou em atraso.', 'Há documentos acumulados de meses.', 'Um sócio pediu os livros em dia.']],
+    ['societario', 'Sócios e contratos', 'Direito Empresarial', ['Vai entrar um sócio novo na empresa.', 'Estamos planejando a sucessão familiar.', 'Há um contrato relevante na mesa.']],
+    ['outro', 'Outro assunto', 'Outro assunto', ['Quero conhecer o escritório.', 'Preciso de uma segunda opinião.', 'Ainda não sei qual frente procurar.']],
+  ];
+  Q = [
+    () => 'Olá. Que situação você precisa resolver agora?',
+    () => 'Em poucas palavras, o que está acontecendo?',
+    () => 'Entendi. Para sabermos como retornar, como podemos chamar você?',
+    () => `Obrigado, ${(this.state.f.nome || '').trim().split(' ')[0]}. Qual e-mail podemos usar para responder?`,
+    () => 'Perfeito. Se precisarmos falar rapidamente, qual telefone devemos usar?',
+    () => 'Confira sua mensagem antes de enviar.',
+    () => 'Recebemos sua situação. A equipe da Oliveira vai analisar o contexto e responder pelo canal informado.',
+  ];
+  state = { step: 0, n: 0, ready: false, err: '', sending: false, mode: 'guided', fullSent: false, fullErr: '', mx: 0.5, my: 0.4,
+    f: { subj: '', sit: '', nome: '', email: '', tel: '', canal: '' } };
+
+  componentDidMount() {
+    const h = (location.hash || '').slice(1);
+    if (this.SUBJ.some(s => s[0] === h)) this.setState(s => ({ step: 1, f: { ...s.f, subj: h } }), () => this.type());
+    else this.type();
+    import('./motion.js').then(m => m.initMotion());
+    this.onR = () => this.forceUpdate(); addEventListener('resize', this.onR);
+  }
+  componentWillUnmount() { clearInterval(this.iv); removeEventListener('resize', this.onR); }
+
+  type() {
+    clearInterval(this.iv);
+    const full = this.Q[this.state.step]();
+    this.setState({ n: 0, ready: false, err: '' });
+    if (this.answer) { this.answer.getAnimations().forEach(x => x.cancel()); this.answer.style.opacity = 0; }
+    this.iv = setInterval(() => {
+      const n = this.state.n + 1;
+      if (n >= full.length) { clearInterval(this.iv); this.setState({ n: full.length, ready: true }, () => this.reveal()); }
+      else this.setState({ n });
+    }, full.length > 70 ? 18 : 30);
+  }
+  reveal() {
+    const a = this.answer; if (!a) return;
+    a.animate([{ opacity: 0, transform: 'translateY(24px)', filter: 'blur(6px)' }, { opacity: 1, transform: 'none', filter: 'blur(0)' }], { duration: 900, easing: 'cubic-bezier(.16,.84,.24,1)', fill: 'forwards' });
+    a.style.opacity = 1;
+    a.querySelectorAll('[data-chip]').forEach((c, i) => c.animate([{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'none' }], { duration: 700, delay: 120 + i * 60, easing: 'cubic-bezier(.16,.84,.24,1)', fill: 'backwards' }));
+    const el = a.querySelector('input,textarea'); if (el) setTimeout(() => el.focus({ preventScroll: true }), 300);
+  }
+  go(step) {
+    const s = this.stage;
+    const done = () => this.setState({ step }, () => { this.type(); if (s) s.getAnimations().forEach(x => x.cancel()); if (s) s.animate([{ opacity: 0, transform: 'translateY(40px)', filter: 'blur(10px)' }, { opacity: 1, transform: 'none', filter: 'blur(0)' }], { duration: 900, easing: 'cubic-bezier(.16,.84,.24,1)' }); });
+    if (!s) return done();
+    s.animate([{ opacity: 1, transform: 'none', filter: 'blur(0)' }, { opacity: 0, transform: 'translateY(-40px)', filter: 'blur(10px)' }], { duration: 480, easing: 'cubic-bezier(.7,0,.84,0)', fill: 'forwards' }).onfinish = () => { done(); };
+  }
+  fail(msg) {
+    this.setState({ err: msg }, () => { if (this.answer) this.answer.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-10px)' }, { transform: 'translateX(8px)' }, { transform: 'translateX(-4px)' }, { transform: 'translateX(0)' }], { duration: 420 }); });
+  }
+  next() {
+    const { step, f } = this.state;
+    if (step === 1) { if (f.sit.trim().length < 6) return this.fail('Descreva a situação em algumas palavras para conseguirmos encaminhar.'); return this.go(this.ret != null ? (this.ret = null, 5) : 2); }
+    if (step === 2) { if (f.nome.trim().length < 2) return this.fail('Informe o nome para continuar.'); return this.go(this.ret != null ? (this.ret = null, 5) : 3); }
+    if (step === 3) { if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email.trim())) return this.fail('Informe um e-mail válido, como nome@empresa.com.br.'); return this.go(this.ret != null ? (this.ret = null, 5) : 4); }
+    if (step === 4) { if (f.tel.replace(/\D/g, '').length < 10) return this.fail('Informe o telefone com DDD, com pelo menos 10 dígitos.'); this.ret = null; return this.go(5); }
+    if (step === 5) { this.setState({ sending: true }); setTimeout(() => { this.setState({ sending: false }); this.go(6); }, 1400); }
+  }
+  set(k, v) { this.setState(s => ({ f: { ...s.f, [k]: v }, err: '', fullErr: '' })); }
+  mask(v) { const d = v.replace(/\D/g, '').slice(0, 11); if (d.length <= 2) return d.length ? `(${d}` : ''; if (d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`; if (d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`; return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`; }
+
+  renderVals() {
+    const { step, n, ready, err, sending, f, mode, mx, my } = this.state;
+    const subjOf = id => this.SUBJ.find(s => s[0] === id);
+    const cur = subjOf(f.subj) || this.SUBJ[6];
+    const firstName = (f.nome || '').trim().split(' ')[0];
+    const guided = mode === 'guided';
+    const fullErrFn = () => {
+      if (!f.nome.trim() && !f.canal.trim()) return 'Preencha o nome e um canal de retorno para continuar.';
+      if (f.nome.trim().length < 2) return 'Informe o nome para continuar.';
+      const c = f.canal.trim(); if (!(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(c) || c.replace(/\D/g, '').length >= 10)) return 'Informe um e-mail ou telefone válido para retorno.';
+      return '';
+    };
+    return {
+      guided, full: !guided, modeLabel: (typeof innerWidth !== 'undefined' && innerWidth < 640) ? (guided ? 'Formulário completo' : 'Conversa guiada') : (guided ? 'Prefiro preencher o formulário completo' : 'Voltar para a conversa guiada'),
+      toggleMode: () => this.setState(s => ({ mode: s.mode === 'guided' ? 'full' : 'guided', fullSent: false, fullErr: '' }), () => { if (this.state.mode === 'guided') this.type(); }),
+      typed: this.Q[step]().slice(0, n),
+      stepLabel: step >= 6 ? 'Enviado' : `${String(step + 1).padStart(2, '0')} — 06`,
+      progress: `scaleX(${Math.min(1, (step + (ready ? 1 : 0.5)) / 6)})`,
+      s0: ready && step === 0, s1: ready && step === 1, s2: ready && step === 2, s3: ready && step === 3, s4: ready && step === 4, s5: ready && step === 5, s6: ready && step === 6,
+      canBack: step > 0 && step < 6 && !(step === 1 && false),
+      back: () => this.go(step - 1),
+      subjects: this.SUBJ.map(([id, l], i) => ({ l, n: String(i + 1).padStart(2, '0'), bg: f.subj === id ? '#F3F0E8' : 'rgba(243,240,232,.04)', fg: f.subj === id ? '#00431C' : '#F3F0E8',
+        pick: () => { this.set('subj', id); setTimeout(() => this.go(this.ret != null ? (this.ret = null, 5) : 1), 260); } })),
+      subjectsFull: this.SUBJ.slice(0, 6).map(([id, , name]) => ({ l: name, bg: f.subj === id ? '#F3F0E8' : 'transparent', fg: f.subj === id ? '#00431C' : '#F3F0E8', pick: () => this.set('subj', id) })),
+      quick: cur[3].map(t => ({ t, pick: () => this.set('sit', t) })),
+      f,
+      onSit: e => this.set('sit', e.target.value), onNome: e => this.set('nome', e.target.value), onEmail: e => this.set('email', e.target.value),
+      onTel: e => this.set('tel', this.mask(e.target.value)), onCanal: e => this.set('canal', e.target.value),
+      onKey: e => { if (e.key === 'Enter') { e.preventDefault(); this.next(); } },
+      onKeyArea: e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); this.next(); } },
+      review: [
+        { k: 'Assunto', v: cur[2], edit: () => { this.ret = 5; this.go(0); } },
+        { k: 'Situação', v: f.sit, edit: () => { this.ret = 5; this.go(1); } },
+        { k: 'Nome', v: f.nome, edit: () => { this.ret = 5; this.go(2); } },
+        { k: 'E-mail', v: f.email, edit: () => { this.ret = 5; this.go(3); } },
+        { k: 'Telefone', v: f.tel, edit: () => { this.ret = 5; this.go(4); } },
+      ],
+      channel: f.email ? `e-mail (${f.email}) ou telefone` : 'canal informado',
+      hasErr: !!err, err,
+      showCta: ready && step >= 1 && step <= 5, showHint: step >= 1 && step <= 4,
+      ctaLabel: step === 1 ? 'Enviar situação' : step === 5 ? (sending ? 'Enviando…' : 'Enviar para a Oliveira') : 'Continuar',
+      next: () => this.next(),
+      restart: () => { this.setState({ f: { subj: '', sit: '', nome: firstName ? f.nome : '', email: f.email, tel: f.tel, canal: '' } }); this.go(0); },
+      fullSent: !guided && this.state.fullSent, fullOpen: !guided && !this.state.fullSent,
+      hasFullErr: !!this.state.fullErr, fullErr: this.state.fullErr,
+      sendFull: () => { const e = fullErrFn(); if (e) return this.setState({ fullErr: e }); this.setState({ fullSent: true }); },
+      glow: `translate(calc(${(mx * 100).toFixed(1)}vw - 35vmax), calc(${(my * 100).toFixed(1)}vh - 35vmax))`,
+      onMove: e => { const t = performance.now(); if (t - (this._t || 0) < 80) return; this._t = t; this.setState({ mx: e.clientX / innerWidth, my: e.clientY / innerHeight }); },
+      stageRef: el => { this.stage = el; }, answerRef: el => { this.answer = el; },
+      caretRef: el => { if (el && !el.__b) el.__b = el.animate([{ opacity: 1 }, { opacity: 1, offset: .5 }, { opacity: 0, offset: .51 }, { opacity: 0 }], { duration: 1000, iterations: Infinity }); },
+      fullRef: this.fullRef || (this.fullRef = el => { if (!el || el === this._fullEl) return; this._fullEl = el; el.querySelectorAll('[data-chip]').forEach((c, i) => c.animate([{ opacity: 0, transform: 'translateY(24px)' }, { opacity: 1, transform: 'none' }], { duration: 800, delay: i * 80, easing: 'cubic-bezier(.16,.84,.24,1)', fill: 'backwards' })); }),
+      focusRef: () => {}, errRef: () => {}, bgRef: () => {},
+    };
+  }
+}
+</script>
+</body>
+</html>

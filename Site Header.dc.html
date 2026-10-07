@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div><header style="position:fixed; top:0; left:0; right:0; z-index:50; transition:background .6s ease, box-shadow .6s ease, padding .6s ease; background:{{ bg }}; box-shadow:{{ shadow }}; backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);">
+  <div style="position:absolute; left:0; bottom:0; height:1px; width:100%; background:#00431C; transform-origin:0 50%; scale:0 1; opacity:.55;" data-progress="1"></div>
+  <div style="max-width:1440px; margin:0 auto; padding:{{ pad }}; display:flex; align-items:center; justify-content:space-between; gap:32px; transition:padding .6s ease;">
+    <a href="Home.dc.html" style="display:flex; align-items:center; position:relative; z-index:2;">
+      <img src="{{ logo }}" alt="Oliveira Contabilidade" style="height:30px; width:auto; display:block;"></img>
+    </a>
+    <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex; align-items:center; gap:36px;">
+        <sc-for list="{{ links }}" as="l" hint-placeholder-count="4">
+          <a href="{{ l.href }}" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.24em; text-transform:uppercase; text-decoration:none; color:{{ fg }}; opacity:{{ l.op }}; padding:8px 0; border-bottom:1px solid {{ l.line }}; transition:opacity .3s, color .6s;" style-hover="opacity:1;">{{ l.label }}</a>
+        </sc-for>
+      </nav>
+    </sc-if>
+    <div style="display:flex; align-items:center; gap:20px; position:relative; z-index:2;">
+      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+        <a href="#" style="font-family:'Mulish', sans-serif; font-size:14px; color:{{ fg }}; text-decoration:none; display:flex; align-items:center; gap:8px; opacity:.8; transition:color .6s;" style-hover="opacity:1;">Área do Cliente <span style="font-size:12px;">↗</span></a>
+      </sc-if>
+      <sc-if value="{{ showCta }}" hint-placeholder-val="{{ true }}"><a href="Contato.dc.html" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.2em; text-transform:uppercase; text-decoration:none; color:{{ ctaFg }}; background:{{ ctaBg }}; padding:15px 22px 13px; border-radius:999px; transition:background .5s, color .5s, transform .4s;" style-hover="transform:translateY(-2px);">Conte sua situação</a></sc-if>
+      <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ toggle }}" aria-label="Menu" style="width:44px; height:44px; border-radius:50%; border:1px solid {{ fg }}; background:transparent; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; cursor:pointer;">
+          <span style="display:block; width:16px; height:1px; background:{{ fg }}; transition:transform .4s; transform:{{ bar1 }};"></span>
+          <span style="display:block; width:16px; height:1px; background:{{ fg }}; transition:transform .4s; transform:{{ bar2 }};"></span>
+        </button>
+      </sc-if>
+    </div>
+  </div>
+</header>
+  <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+    <div ref="{{ menuRef }}" style="position:fixed; inset:0; background:#002A14; z-index:49; padding:120px 28px 40px; display:flex; flex-direction:column; justify-content:space-between;">
+      <nav style="display:flex; flex-direction:column; gap:8px;">
+        <sc-for list="{{ links }}" as="l" hint-placeholder-count="4">
+          <div style="overflow:hidden;"><a data-m="1" href="{{ l.href }}" style="display:block; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:48px; line-height:1.15; color:#F3F0E8; text-decoration:none;">{{ l.label }}</a></div>
+        </sc-for>
+      </nav>
+      <div data-m="1" style="font-family:'Mulish', sans-serif; font-size:14px; line-height:1.7; color:#9DAA8C;">Av. das Américas, 500 · Barra da Tijuca<br></br>Rio de Janeiro/RJ</div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;dark&quot;,&quot;tsType&quot;:&quot;'dark'|'light'&quot;},&quot;active&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { scrolled: false, open: false, w: typeof window !== 'undefined' ? window.innerWidth : 1440 };
+  componentDidMount() {
+    this.onS = () => { const s = window.scrollY > 40; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    this.onR = () => this.setState({ w: window.innerWidth });
+    addEventListener('scroll', this.onS, { passive: true }); addEventListener('resize', this.onR); this.onS();
+  }
+  componentWillUnmount() { removeEventListener('scroll', this.onS); removeEventListener('resize', this.onR); }
+  renderVals() {
+    const { scrolled, open, w } = this.state;
+    const theme = this.props.theme ?? 'dark';
+    const active = this.props.active ?? '';
+    const onDark = open || (theme === 'dark' && !scrolled);
+    const fg = onDark ? '#F3F0E8' : '#00431C';
+    const desktop = w >= 1080;
+    const links = [
+      { id: 'empresa', label: 'Empresa', href: 'Empresa.dc.html' },
+      { id: 'servicos', label: 'Serviços', href: 'Servicos.dc.html' },
+      { id: 'metodo', label: 'Como trabalhamos', href: 'Home.dc.html#metodo' },
+      { id: 'contato', label: 'Contato', href: 'Contato.dc.html' },
+    ].map(l => ({ ...l, op: l.id === active ? 1 : 0.72, line: l.id === active ? fg : 'transparent' }));
+    return {
+      links, fg, desktop, mobile: !desktop, open, showCta: w >= 640,
+      bg: open ? 'transparent' : scrolled ? 'rgba(250,248,243,.86)' : 'transparent',
+      shadow: scrolled && !open ? '0 1px 0 rgba(0,67,28,.12)' : 'none',
+      pad: scrolled ? '14px clamp(20px,4vw,56px)' : '28px clamp(20px,4vw,56px)',
+      logo: onDark ? 'assets/logo-oliveira-branca.png' : 'assets/logo-oliveira.png',
+      ctaBg: onDark ? '#F3F0E8' : '#00431C', ctaFg: onDark ? '#00431C' : '#F3F0E8',
+      bar1: open ? 'translateY(3px) rotate(45deg)' : 'none', bar2: open ? 'translateY(-3px) rotate(-45deg)' : 'none',
+      toggle: () => this.setState(s => ({ open: !s.open })),
+      menuRef: el => { if (!el) return; el.animate([{ clipPath: 'circle(0% at 92% 4%)' }, { clipPath: 'circle(150% at 92% 4%)' }], { duration: 900, easing: 'cubic-bezier(.7,0,.2,1)' });
+        el.querySelectorAll('[data-m]').forEach((n, i) => n.animate([{ transform: 'translateY(110%)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 900, delay: 250 + i * 80, easing: 'cubic-bezier(.16,.84,.24,1)', fill: 'both' })); },
+    };
+  }
+}
+</script>
+</body>
+</html>
