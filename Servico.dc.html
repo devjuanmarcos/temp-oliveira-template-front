@@ -16,33 +16,33 @@
 <div ref="{{ rootRef }}" style="background:#FAF8F3; overflow-x:clip;">
   <dc-import name="Site Header" theme="light" active="servicos" hint-size="100%,0px"></dc-import>
 
-  <section data-screen-label="Serviço · Abertura" style="max-width:1440px; margin:0 auto; padding:clamp(150px,20vh,220px) clamp(20px,4vw,56px) clamp(56px,7vw,96px);">
-    <nav data-reveal="fade" data-delay="200" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:clamp(56px,7vw,96px);">
+  <section data-screen-label="Serviço · Abertura" style="max-width:1440px; margin:0 auto; padding:clamp(116px,16vh,170px) clamp(20px,4vw,56px) clamp(36px,5vw,64px);">
+    <nav data-reveal="fade" data-delay="200" style="display:flex; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; gap:8px; margin-left:calc(-1 * clamp(20px,4vw,56px)); margin-right:calc(-1 * clamp(20px,4vw,56px)); padding:0 clamp(20px,4vw,56px) 4px; margin-bottom:clamp(36px,5vw,64px);">
       <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="6">
-        <a href="{{ t.href }}" style="font-family:'Mulish', sans-serif; font-weight:500; font-size:14px; text-decoration:none; padding:10px 18px; border-radius:999px; border:1px solid {{ t.bd }}; background:{{ t.bg }}; color:{{ t.fg }}; transition:background .4s, color .4s;" style-hover="border-color:#00431C;">{{ t.s }}</a>
+        <a href="{{ t.href }}" style="font-family:'Mulish', sans-serif; font-weight:500; font-size:14px; text-decoration:none; padding:12px 18px; border-radius:999px; flex:none; white-space:nowrap; border:1px solid {{ t.bd }}; background:{{ t.bg }}; color:{{ t.fg }}; transition:background .4s, color .4s;" style-hover="border-color:#00431C;">{{ t.s }}</a>
       </sc-for>
     </nav>
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr)); gap:clamp(40px,6vw,96px); align-items:end;">
       <div>
         <div data-swap="1" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#00431C; margin-bottom:32px; display:flex; gap:18px; align-items:center;"><span>Frente {{ cur.n }} / 06</span><span style="width:56px; height:1px; background:#00431C;"></span></div>
-        <h1 data-swap="1" style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(56px,7.6vw,128px); line-height:.95; letter-spacing:-.02em; color:#00431C; text-wrap:balance;">{{ cur.s }}</h1>
+        <h1 data-swap="1" style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(40px,7.6vw,128px); line-height:.95; letter-spacing:-.02em; color:#00431C; text-wrap:balance;">{{ cur.s }}</h1>
       </div>
       <p data-swap="1" style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-style:italic; font-size:clamp(26px,2.4vw,34px); line-height:1.25; color:#00431C; max-width:520px; text-wrap:pretty;">{{ cur.what }}</p>
     </div>
   </section>
 
   <section data-screen-label="Serviço · Imagem" style="padding:0 clamp(20px,4vw,56px);">
-    <div data-reveal="wipe" data-dur="1700" style="max-width:1440px; margin:0 auto; position:relative; aspect-ratio:16/7; min-height:320px; overflow:hidden; background:#002A14;">
+    <div data-reveal="wipe" data-dur="1700" style="max-width:1440px; margin:0 auto; position:relative; width:100%; height:clamp(300px,44vw,640px); overflow:hidden; background:#002A14;">
       <img src="{{ cur.img }}" alt="" data-swap="1" data-parallax="-0.1" style="position:absolute; left:0; top:-10%; width:100%; height:120%; object-fit:cover;"></img>
       <div style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(0,42,20,.55), rgba(0,42,20,0) 60%);"></div>
     </div>
   </section>
 
-  <section data-screen-label="Serviço · Problema" style="max-width:1440px; margin:0 auto; padding:clamp(110px,13vw,180px) clamp(20px,4vw,56px);">
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr)); gap:clamp(48px,7vw,120px);">
+  <section data-screen-label="Serviço · Problema" style="max-width:1440px; margin:0 auto; padding:clamp(64px,8vw,120px) clamp(20px,4vw,56px);">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr)); gap:clamp(40px,5vw,88px);">
       <div>
         <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#00431C; margin-bottom:28px;" data-reveal="fade">(01) &#160;O problema</div>
-        <p data-swap="1" data-reveal="up" style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(34px,3.6vw,56px); line-height:1.14; letter-spacing:-.01em; color:#00431C; text-wrap:pretty;">{{ cur.prob }}</p>
+        <p data-swap="1" data-reveal="up" style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(28px,3.6vw,56px); line-height:1.14; letter-spacing:-.01em; color:#00431C; text-wrap:pretty;">{{ cur.prob }}</p>
       </div>
       <div style="display:flex; flex-direction:column; justify-content:flex-end;">
         <div data-reveal="up" data-delay="150" style="background:#F3F0E8; padding:clamp(28px,3.5vw,48px); border-top:2px solid #00431C;">
@@ -53,15 +53,15 @@
     </div>
   </section>
 
-  <section data-screen-label="Serviço · Etapas" style="background:#00431C; color:#F3F0E8; padding:clamp(110px,13vw,180px) clamp(20px,4vw,56px); position:relative; overflow:hidden;">
+  <section data-screen-label="Serviço · Etapas" style="background:#00431C; color:#F3F0E8; padding:clamp(64px,8vw,120px) clamp(20px,4vw,56px); position:relative; overflow:hidden;">
     <img src="assets/ramo.png" alt="" style="position:absolute; right:-10%; top:-10%; width:min(48vw,640px); opacity:.1; pointer-events:none;" data-parallax="-0.1"></img>
     <div style="position:relative; max-width:1440px; margin:0 auto;">
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr)); gap:48px; align-items:end; margin-bottom:clamp(64px,8vw,104px);">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr)); gap:48px; align-items:end; margin-bottom:clamp(40px,5vw,72px);">
         <div>
           <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#C9D2BC; margin-bottom:28px;" data-reveal="fade">(02) &#160;Entregas e etapas</div>
-          <h2 style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(44px,5.6vw,88px); line-height:1; letter-spacing:-.02em;">
-            <span style="display:block; overflow:hidden;"><span data-reveal="rise" style="display:block;">O que o trabalho</span></span>
-            <span style="display:block; overflow:hidden; padding-bottom:.08em;"><span data-reveal="rise" data-delay="120" style="display:block; font-style:italic; color:#C9D2BC;">pode incluir.</span></span>
+          <h2 style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(34px,5.6vw,88px); line-height:1.08; letter-spacing:-.02em;">
+            <span style="display:block; overflow:hidden; padding-bottom:.12em;"><span data-reveal="rise" style="display:block;">O que o trabalho</span></span>
+            <span style="display:block; overflow:hidden; padding-bottom:.12em;"><span data-reveal="rise" data-delay="120" style="display:block; font-style:italic; color:#C9D2BC;">pode incluir.</span></span>
           </h2>
         </div>
         <p data-reveal="up" data-delay="200" style="margin:0; font-family:'Mulish', sans-serif; font-size:15px; line-height:1.7; color:rgba(243,240,232,.7); max-width:400px; justify-self:end;">Escopo, periodicidade e prazos são definidos em proposta, após análise do caso.</p>
@@ -82,12 +82,12 @@
     </div>
   </section>
 
-  <section data-screen-label="Serviço · Resultado" style="position:relative; overflow:hidden; padding:clamp(130px,16vw,220px) clamp(20px,4vw,56px); text-align:center;">
+  <section data-screen-label="Serviço · Resultado" style="position:relative; overflow:hidden; padding:clamp(72px,10vw,140px) clamp(20px,4vw,56px); text-align:center;">
     <img src="assets/textura-clara.png" alt="" data-breathe="26000" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"></img>
     <div style="position:absolute; inset:0; background:radial-gradient(ellipse at center, rgba(250,248,243,.94) 0%, rgba(250,248,243,.6) 60%, rgba(250,248,243,.25) 100%);"></div>
     <div style="position:relative; max-width:1040px; margin:0 auto;">
       <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#00431C; margin-bottom:36px;" data-reveal="fade">(03) &#160;Resultado esperado</div>
-      <p data-swap="1" data-reveal="up" style="margin:0 0 56px; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(40px,4.4vw,68px); line-height:1.08; letter-spacing:-.02em; color:#00431C; text-wrap:balance;">{{ cur.res }}</p>
+      <p data-swap="1" data-reveal="up" style="margin:0 0 56px; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(32px,4.4vw,68px); line-height:1.08; letter-spacing:-.02em; color:#00431C; text-wrap:balance;">{{ cur.res }}</p>
       <div data-reveal="up" data-delay="200" style="display:flex; flex-wrap:wrap; justify-content:center; gap:14px;">
         <a href="{{ cur.contact }}" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; color:#F3F0E8; background:#00431C; padding:20px 30px 18px; border-radius:999px; transition:transform .4s;" style-hover="transform:translateY(-3px); color:#F3F0E8;">{{ cur.cta }}</a>
       </div>
@@ -95,10 +95,10 @@
   </section>
 
   <section data-screen-label="Serviço · Próxima" style="background:#002A14;">
-    <a href="{{ next.href }}" style="display:block; max-width:1440px; margin:0 auto; padding:clamp(64px,8vw,112px) clamp(20px,4vw,56px); text-decoration:none; color:#F3F0E8;" style-hover="color:#C9D2BC;">
+    <a href="{{ next.href }}" style="display:block; max-width:1440px; margin:0 auto; padding:clamp(40px,5vw,72px) clamp(20px,4vw,56px); text-decoration:none; color:#F3F0E8;" style-hover="color:#C9D2BC;">
       <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#9DAA8C; margin-bottom:24px;">Próxima frente · {{ next.n }}</div>
       <div style="display:flex; justify-content:space-between; align-items:center; gap:32px;">
-        <span style="font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(44px,5.6vw,88px); line-height:1; letter-spacing:-.02em; transition:color .4s;">{{ next.s }}</span>
+        <span style="font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(28px,5.6vw,88px); line-height:1.08; letter-spacing:-.02em; transition:color .4s; min-width:0;">{{ next.s }}</span>
         <span style="width:clamp(64px,7vw,96px); aspect-ratio:1; border-radius:50%; border:1px solid rgba(243,240,232,.4); display:flex; align-items:center; justify-content:center; font-size:24px; flex:none;">→</span>
       </div>
     </a>

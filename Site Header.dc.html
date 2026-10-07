@@ -65,7 +65,7 @@ class Component extends DCLogic {
     const links = [
       { id: 'empresa', label: 'Empresa', href: 'Empresa.dc.html' },
       { id: 'servicos', label: 'Serviços', href: 'Servicos.dc.html' },
-      { id: 'metodo', label: 'Como trabalhamos', href: 'Home.dc.html#metodo' },
+      { id: 'metodo', label: 'Como trabalhamos', href: 'Servicos.dc.html#metodo' },
       { id: 'contato', label: 'Contato', href: 'Contato.dc.html' },
     ].map(l => ({ ...l, op: l.id === active ? 1 : 0.72, line: l.id === active ? fg : 'transparent' }));
     return {

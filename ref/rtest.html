@@ -1,0 +1,20 @@
+<!doctype html><html><body style="margin:0;font:11px monospace;background:#fff">
+<div id="out" style="padding:8px;white-space:pre-wrap"></div>
+<div id="frames" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+<script>
+const W=+(new URLSearchParams(location.search).get('w')||375);
+const pages=['Home','Empresa','Servicos','Servico','Contato'];
+const out=document.getElementById('out');
+pages.forEach(p=>{const f=document.createElement('iframe');f.src='../'+p+'.dc.html';f.style.cssText=`width:${W}px;height:700px;border:1px solid #ccc`;f.dataset.p=p;document.getElementById('frames').appendChild(f);});
+window.audit=async()=>{let txt='W='+W+'\n';for(const f of document.querySelectorAll('iframe')){const d=f.contentDocument,w=f.contentWindow;const H=d.documentElement.scrollHeight;
+ for(let y=0;y<H;y+=500){w.scrollTo(0,y);await new Promise(r=>setTimeout(r,40));}
+ await new Promise(r=>setTimeout(r,300));
+ const vw=d.documentElement.clientWidth;const bad=[];
+ d.querySelectorAll('body *').forEach(el=>{const r=el.getBoundingClientRect();if(r.width===0)return;
+  let clip=false;for(let a=el.parentElement;a&&a!==d.body;a=a.parentElement){const cs=w.getComputedStyle(a);if(cs.overflow!=='visible'||cs.overflowX!=='visible'){const ar=a.getBoundingClientRect();if(ar.right<=vw+1&&ar.left>=-1){clip=true;}break;}}
+  if(!clip&&(r.right>vw+1||r.left<-1)&&!el.closest('[data-track]')&&!el.closest('[data-marquee]')&&!el.closest('[data-spin]')){bad.push((el.tagName+' '+(el.textContent||el.getAttribute('src')||'').trim().slice(0,40)+' L'+Math.round(r.left)+' R'+Math.round(r.right)));}
+  if(el.scrollWidth>el.clientWidth+2 && /INPUT|TEXTAREA|H1|H2|H3|P|SPAN|A|BUTTON/.test(el.tagName) && w.getComputedStyle(el).overflow==='visible'){bad.push('TEXTOVER '+el.tagName+' '+el.textContent.trim().slice(0,30)+' sw'+el.scrollWidth+' cw'+el.clientWidth);}
+ });
+ txt+=f.dataset.p+' H='+H+' vw='+vw+' docSW='+d.documentElement.scrollWidth+'\n  '+[...new Set(bad)].slice(0,14).join('\n  ')+'\n';w.scrollTo(0,0);}
+ out.textContent=txt;return txt;};
+</script></body></html>

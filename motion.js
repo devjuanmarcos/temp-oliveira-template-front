@@ -79,7 +79,7 @@ export function initMotion(root = document) {
     const tick = () => {
       document.querySelectorAll('[data-parallax]').forEach(el => {
         const r = el.getBoundingClientRect(); const c = r.top + r.height / 2 - vh() / 2;
-        el.style.translate = `0 ${(c * parseFloat(el.dataset.parallax)).toFixed(1)}px`;
+        const room = Math.max(0, (el.offsetHeight - (el.parentElement ? el.parentElement.offsetHeight : 0)) / 2); let v = c * parseFloat(el.dataset.parallax); if (el.parentElement && getComputedStyle(el.parentElement).overflow !== 'visible') v = Math.max(-room, Math.min(room, v)); el.style.translate = `0 ${v.toFixed(1)}px`;
       });
       document.querySelectorAll('[data-words]').forEach(box => {
         const r = box.getBoundingClientRect();
