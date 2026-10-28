@@ -11,7 +11,7 @@
   <title>Serviços — Oliveira Contabilidade</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"></link>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=Mulish:wght@400;500;600&amp;display=swap"></link>
-  <style>html,body{margin:0;background:#FAF8F3;color:#121A16;-webkit-font-smoothing:antialiased;} *{box-sizing:border-box;} a{color:#00431C;} a:hover{color:#002A14;} ::selection{background:#00431C;color:#F3F0E8;}</style>
+  <style>html,body{margin:0;background:#FAF8F3;color:#121A16;-webkit-font-smoothing:antialiased;} *{box-sizing:border-box;} a{color:#00431C;} a:hover{color:#002A14;} ::selection{background:#00431C;color:#F3F0E8;} @view-transition{navigation:auto;} ::view-transition-old(root){animation:omOut .42s cubic-bezier(.7,0,.84,0) both;} ::view-transition-new(root){animation:omIn .8s cubic-bezier(.16,.84,.24,1) both;} ::view-transition-group(site-header){animation-duration:.5s;} ::view-transition-old(site-header),::view-transition-new(site-header){animation-duration:.5s;} @keyframes omOut{to{opacity:0;transform:translateY(-20px);filter:blur(6px);}} @keyframes omIn{from{opacity:0;transform:translateY(28px);filter:blur(6px);}} @media (prefers-reduced-motion: reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none !important;}}</style>
 </helmet>
 <div style="background:#FAF8F3; overflow-x:clip;">
   <dc-import name="Site Header" theme="dark" active="servicos" hint-size="100%,0px"></dc-import>
@@ -21,9 +21,9 @@
     <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,42,20,.6) 0%, rgba(0,42,20,.82) 55%, #002A14 100%);"></div>
     <div style="position:relative; max-width:1440px; width:100%; margin:0 auto; padding:150px clamp(20px,4vw,56px) clamp(36px,5vw,64px);">
       <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#C9D2BC; margin-bottom:36px;" data-reveal="fade" data-delay="300">Serviços</div>
-      <h1 style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(42px,8.4vw,140px); line-height:.95; letter-spacing:-.02em; max-width:1240px;">
-        <span style="display:block; overflow:hidden; padding-bottom:.12em;"><span data-reveal="rise" data-delay="300" data-dur="1500" style="display:block;">Seis frentes,</span></span>
-        <span style="display:block; overflow:hidden; padding-bottom:.12em;"><span data-reveal="rise" data-delay="450" data-dur="1500" style="display:block; font-style:italic; color:#C9D2BC;">uma mesma leitura.</span></span>
+      <h1 style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(42px,8.4vw,140px); line-height:1.06; letter-spacing:-.02em; max-width:1240px;">
+        <span style="display:block; overflow:hidden; padding:.1em 0 .14em; margin:-.1em 0 0;"><span data-reveal="rise" data-delay="300" data-dur="1500" style="display:block;">Seis frentes,</span></span>
+        <span style="display:block; overflow:hidden; padding:.1em 0 .14em; margin:-.1em 0 0;"><span data-reveal="rise" data-delay="450" data-dur="1500" style="display:block; font-style:italic; color:#C9D2BC;">uma mesma leitura.</span></span>
       </h1>
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr)); gap:40px; margin-top:56px; align-items:end;">
         <p data-reveal="up" data-delay="750" style="margin:0; font-family:'Mulish', sans-serif; font-size:clamp(18px,1.5vw,21px); line-height:1.6; color:rgba(243,240,232,.84); max-width:540px; text-wrap:pretty;">Abertura, tributos, contabilidade, pessoal, regularização e societário. Áreas distintas que, aqui, analisam o mesmo cliente em conjunto — para que uma decisão não desfaça a outra.</p>
@@ -35,32 +35,38 @@
   <section data-screen-label="Serviços · Diagnóstico" style="max-width:1440px; margin:0 auto; padding:clamp(64px,8vw,120px) clamp(20px,4vw,56px);">
     <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#00431C; margin-bottom:28px;" data-reveal="fade">(01) &#160;Diagnóstico rápido</div>
     <h2 style="margin:0 0 clamp(36px,5vw,64px); font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(34px,5.6vw,88px); line-height:1.08; letter-spacing:-.02em; color:#00431C; max-width:1000px;">
-      <span style="display:block; overflow:hidden; padding-bottom:.12em;"><span data-reveal="rise" style="display:block;">Qual frase soa como</span></span>
-      <span style="display:block; overflow:hidden; padding-bottom:.12em;"><span data-reveal="rise" data-delay="120" style="display:block; font-style:italic;">a sua empresa hoje?</span></span>
+      <span style="display:block; overflow:hidden; padding:.1em 0 .14em; margin:-.1em 0 0;"><span data-reveal="rise" style="display:block;">Qual frase soa como</span></span>
+      <span style="display:block; overflow:hidden; padding:.1em 0 .14em; margin:-.1em 0 0;"><span data-reveal="rise" data-delay="120" style="display:block; font-style:italic;">a sua empresa hoje?</span></span>
     </h2>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr)); gap:clamp(40px,5vw,80px); align-items:start;">
-      <div style="border-top:1px solid rgba(0,67,28,.2);">
+    <div data-reveal="fade" style="display:flex; align-items:center; gap:14px; margin:-12px 0 clamp(28px,3vw,40px); font-family:'Mulish', sans-serif; font-size:15px; line-height:1.5; color:#3D4A43;">
+      <span ref="{{ hintRef }}" style="width:36px; height:36px; flex:none; border-radius:50%; border:1px solid #00431C; display:flex; align-items:center; justify-content:center; color:#00431C; font-size:15px;">↓</span>
+      <span>{{ hintText }}</span>
+    </div>
+    <div style="display:grid; grid-template-columns:{{ diagCols }}; gap:clamp(24px,4vw,64px); align-items:start;">
+      <div role="tablist" aria-label="Situações" style="display:flex; flex-direction:column; gap:10px;">
         <sc-for list="{{ items }}" as="it" hint-placeholder-count="6">
-          <button onClick="{{ it.pick }}" data-reveal="up" data-delay="{{ it.delay }}" style="width:100%; display:grid; grid-template-columns:48px minmax(0,1fr) 20px; gap:16px; align-items:center; text-align:left; background:{{ it.bg }}; color:{{ it.fg }}; border:0; border-bottom:1px solid rgba(0,67,28,.2); padding:28px 20px; cursor:pointer; transition:background .5s, color .5s;" style-hover="padding-left:28px;">
-            <span style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.2em; opacity:.7;">{{ it.n }}</span>
-            <span style="font-family:'Josefin Sans', sans-serif; font-weight:300; font-style:italic; font-size:clamp(22px,2vw,28px); line-height:1.25; text-wrap:pretty;">“{{ it.q }}”</span>
-            <span style="font-size:16px; opacity:{{ it.arrow }}; transition:opacity .4s;">→</span>
-          </button>
-        </sc-for>
-      </div>
-      <div style="position:{{ stickyPos }}; top:{{ stickyTop1 }};">
-        <div ref="{{ panelRef }}" style="background:#00431C; color:#F3F0E8; padding:clamp(32px,4vw,56px); position:relative; overflow:hidden; min-height:540px; display:flex; flex-direction:column; gap:32px;">
+          <div style="display:flex; flex-direction:column;">
+            <button role="tab" aria-selected="{{ it.on }}" onClick="{{ it.pick }}" data-reveal="up" data-delay="{{ it.delay }}" style="width:100%; display:flex; align-items:center; gap:clamp(14px,2vw,20px); text-align:left; background:{{ it.bg }}; color:{{ it.fg }}; border:1px solid {{ it.bd }}; border-radius:14px; padding:clamp(18px,2vw,24px) clamp(18px,2vw,24px); cursor:pointer; transition:background .45s, color .45s, border-color .45s, transform .45s, box-shadow .45s; box-shadow:{{ it.sh }};" style-hover="border-color:#00431C; transform:translateY(-2px);">
+              <span style="width:28px; height:28px; flex:none; border-radius:50%; border:1.5px solid {{ it.dotBd }}; display:flex; align-items:center; justify-content:center; transition:border-color .45s;"><span style="width:12px; height:12px; border-radius:50%; background:{{ it.dotBg }}; transform:{{ it.dotS }}; transition:transform .45s cubic-bezier(.16,.84,.24,1), background .45s;"></span></span>
+              <span style="flex:1; min-width:0; display:flex; flex-direction:column; gap:10px;">
+                <span style="display:flex; align-items:baseline; gap:10px; font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; line-height:1.5; letter-spacing:.16em; text-transform:uppercase; opacity:.75;"><span style="flex:none;">{{ it.n }}</span><span style="flex:none; width:14px; height:1px; background:currentColor; align-self:center; opacity:.6;"></span><span style="min-width:0;">{{ it.s }}</span></span>
+                <span style="font-family:'Josefin Sans', sans-serif; font-weight:300; font-style:italic; font-size:clamp(19px,1.9vw,26px); line-height:1.35; text-wrap:pretty;">“{{ it.q }}”</span>
+              </span>
+              <span style="flex:none; width:36px; height:36px; border-radius:50%; border:1px solid {{ it.dotBd }}; display:flex; align-items:center; justify-content:center; font-size:14px; transform:{{ it.chev }}; transition:transform .5s cubic-bezier(.16,.84,.24,1);">→</span>
+            </button>
+            <sc-if value="{{ it.inline }}" hint-placeholder-val="{{ false }}">
+              <div ref="{{ inlineRef }}" style="background:#00431C; color:#F3F0E8; padding:28px 22px; border-radius:0 0 14px 14px; margin-top:-12px; padding-top:40px; position:relative; overflow:hidden; display:flex; flex-direction:column; gap:24px;">
           <img src="assets/ramo.png" alt="" style="position:absolute; right:-18%; bottom:-20%; width:70%; opacity:.12; pointer-events:none;"></img>
-          <div data-p="1" style="display:flex; justify-content:space-between; align-items:center; gap:16px; position:relative;">
-            <span style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.24em; text-transform:uppercase; color:#C9D2BC;">{{ cur.s }}</span>
+          <div data-p="1" style="position:relative; display:flex; justify-content:space-between; align-items:center; gap:16px;">
+            <span style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; text-transform:uppercase; font-size:12px; letter-spacing:.24em; color:#C9D2BC;">{{ cur.s }}</span>
             <span style="font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:20px; color:#C9D2BC;">{{ cur.n }} / 06</span>
           </div>
           <div data-p="1" style="position:relative;">
             <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:#9DAA8C; margin-bottom:12px;">O desafio</div>
-            <p style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(26px,2.4vw,34px); line-height:1.2; text-wrap:pretty;">{{ cur.d }}</p>
+            <p style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(24px,2.4vw,34px); line-height:1.2; text-wrap:pretty;">{{ cur.d }}</p>
           </div>
           <div data-p="1" style="position:relative; height:1px; background:rgba(243,240,232,.2);"></div>
-          <div data-p="1" style="position:relative; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:28px;">
+          <div data-p="1" style="position:relative; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr)); gap:24px;">
             <div>
               <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:#9DAA8C; margin-bottom:12px;">Como atuamos</div>
               <p style="margin:0; font-family:'Mulish', sans-serif; font-size:16px; line-height:1.7; color:rgba(243,240,232,.86);">{{ cur.a }}</p>
@@ -74,23 +80,57 @@
             <a href="{{ cur.page }}" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.2em; text-transform:uppercase; text-decoration:none; color:#00431C; background:#F3F0E8; padding:18px 26px 16px; border-radius:999px;">Ver a frente completa</a>
             <a href="{{ cur.contact }}" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.2em; text-transform:uppercase; text-decoration:none; color:#F3F0E8; border:1px solid rgba(243,240,232,.4); padding:17px 26px 15px; border-radius:999px;">{{ cur.cta }}</a>
           </div>
-        </div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
       </div>
+      <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
+        <div style="position:sticky; top:110px;">
+          <div ref="{{ panelRef }}" style="background:#00431C; color:#F3F0E8; padding:clamp(32px,4vw,56px); border-radius:14px; position:relative; overflow:hidden; min-height:540px; display:flex; flex-direction:column; gap:32px;">
+            <span ref="{{ arrowRef }}" style="position:absolute; left:-1px; top:{{ arrowTop }}; width:0; height:0; border-top:12px solid transparent; border-bottom:12px solid transparent; border-left:12px solid #F3F0E8; transition:top .6s cubic-bezier(.16,.84,.24,1);"></span>
+          <img src="assets/ramo.png" alt="" style="position:absolute; right:-18%; bottom:-20%; width:70%; opacity:.12; pointer-events:none;"></img>
+          <div data-p="1" style="position:relative; display:flex; justify-content:space-between; align-items:center; gap:16px;">
+            <span style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; text-transform:uppercase; font-size:12px; letter-spacing:.24em; color:#C9D2BC;">{{ cur.s }}</span>
+            <span style="font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:20px; color:#C9D2BC;">{{ cur.n }} / 06</span>
+          </div>
+          <div data-p="1" style="position:relative;">
+            <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:#9DAA8C; margin-bottom:12px;">O desafio</div>
+            <p style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(24px,2.4vw,34px); line-height:1.2; text-wrap:pretty;">{{ cur.d }}</p>
+          </div>
+          <div data-p="1" style="position:relative; height:1px; background:rgba(243,240,232,.2);"></div>
+          <div data-p="1" style="position:relative; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr)); gap:24px;">
+            <div>
+              <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:#9DAA8C; margin-bottom:12px;">Como atuamos</div>
+              <p style="margin:0; font-family:'Mulish', sans-serif; font-size:16px; line-height:1.7; color:rgba(243,240,232,.86);">{{ cur.a }}</p>
+            </div>
+            <div>
+              <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:#9DAA8C; margin-bottom:12px;">O que se espera</div>
+              <p style="margin:0; font-family:'Mulish', sans-serif; font-size:16px; line-height:1.7; color:rgba(243,240,232,.86);">{{ cur.r }}</p>
+            </div>
+          </div>
+          <div data-p="1" style="position:relative; margin-top:auto; display:flex; flex-wrap:wrap; gap:12px;">
+            <a href="{{ cur.page }}" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.2em; text-transform:uppercase; text-decoration:none; color:#00431C; background:#F3F0E8; padding:18px 26px 16px; border-radius:999px;">Ver a frente completa</a>
+            <a href="{{ cur.contact }}" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.2em; text-transform:uppercase; text-decoration:none; color:#F3F0E8; border:1px solid rgba(243,240,232,.4); padding:17px 26px 15px; border-radius:999px;">{{ cur.cta }}</a>
+          </div>
+          </div>
+        </div>
+      </sc-if>
     </div>
   </section>
 
   <section data-screen-label="Serviços · Índice" style="background:#F3F0E8; padding:clamp(56px,8vw,112px) clamp(20px,4vw,56px);">
     <div style="max-width:1440px; margin:0 auto;">
       <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#00431C; margin-bottom:clamp(40px,5vw,72px);" data-reveal="fade">(02) &#160;Índice das frentes</div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr)); border-top:1px solid rgba(0,67,28,.2); border-left:1px solid rgba(0,67,28,.2);">
+      <div style="display:grid; grid-template-columns:{{ idxCols }}; gap:clamp(10px,1.4vw,20px);">
         <sc-for list="{{ items }}" as="it" hint-placeholder-count="6">
-          <a href="{{ it.page }}" data-reveal="up" data-delay="{{ it.delay }}" style="position:relative; display:flex; flex-direction:column; justify-content:space-between; gap:72px; min-height:300px; padding:36px; border-right:1px solid rgba(0,67,28,.2); border-bottom:1px solid rgba(0,67,28,.2); text-decoration:none; color:#00431C; background:transparent; transition:background .6s, color .6s;" style-hover="background:#00431C; color:#F3F0E8;">
+          <a href="{{ it.page }}" data-reveal="up" data-delay="{{ it.delay }}" style="position:relative; display:flex; flex-direction:column; justify-content:space-between; gap:{{ idxGap }}; min-height:{{ idxMin }}; padding:clamp(18px,2.4vw,34px); border:1px solid rgba(0,67,28,.2); border-radius:14px; text-decoration:none; color:#00431C; background:#FAF8F3; transition:background .6s, color .6s, transform .5s;" style-hover="background:#00431C; color:#F3F0E8; transform:translateY(-4px);">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px;">
               <span style="font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:20px;">{{ it.n }}</span>
-              <span style="width:44px; height:44px; border-radius:50%; border:1px solid currentColor; display:flex; align-items:center; justify-content:center; font-size:16px;">↗</span>
+              <span style="width:{{ idxBtn }}; height:{{ idxBtn }}; flex:none; border-radius:50%; border:1px solid currentColor; display:flex; align-items:center; justify-content:center; font-size:14px;">↗</span>
             </div>
             <div>
-              <h3 style="margin:0 0 14px; font-family:'Josefin Sans', sans-serif; font-weight:400; font-size:clamp(26px,2.4vw,34px); line-height:1.15;">{{ it.s }}</h3>
+              <h3 style="margin:0 0 12px; font-family:'Josefin Sans', sans-serif; font-weight:400; font-size:{{ idxH }}; line-height:1.15; text-wrap:balance;">{{ it.s }}</h3>
               <p style="margin:0; font-family:'Mulish', sans-serif; font-size:15px; line-height:1.6; opacity:.78;">{{ it.tag }}</p>
             </div>
           </a>
@@ -104,8 +144,8 @@
       <div style="position:{{ stickyPos }}; top:{{ stickyTop2 }};">
         <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#00431C; margin-bottom:28px;" data-reveal="fade">(03) &#160;Como trabalhamos</div>
         <h2 style="margin:0 0 32px; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(34px,5.6vw,88px); line-height:1.08; letter-spacing:-.02em; color:#00431C;">
-          <span style="display:block; overflow:hidden; padding-bottom:.12em;"><span data-reveal="rise" style="display:block;">Por dentro</span></span>
-          <span style="display:block; overflow:hidden; padding-bottom:.12em;"><span data-reveal="rise" data-delay="120" style="display:block; font-style:italic;">do método.</span></span>
+          <span style="display:block; overflow:hidden; padding:.1em 0 .14em; margin:-.1em 0 0;"><span data-reveal="rise" style="display:block;">Por dentro</span></span>
+          <span style="display:block; overflow:hidden; padding:.1em 0 .14em; margin:-.1em 0 0;"><span data-reveal="rise" data-delay="120" style="display:block; font-style:italic;">do método.</span></span>
         </h2>
         <p data-reveal="up" data-delay="200" style="margin:0; font-family:'Mulish', sans-serif; font-size:clamp(18px,1.5vw,21px); line-height:1.6; color:#3D4A43; max-width:440px; text-wrap:pretty;">O mesmo percurso vale para qualquer frente. Muda o assunto; permanece a ordem das perguntas.</p>
       </div>
@@ -167,16 +207,23 @@ class Component extends DCLogic {
       ['escrituracao', 'Escrituração Contábil', 'O banco pediu demonstrações atualizadas e estou em atraso.', 'Regularizar o passado sem travar a operação do presente.', 'Diagnosticamos pendências, recuperamos os lançamentos e implantamos um fluxo de documentos.', 'Escrituração em dia e documentação pronta quando pedirem.', 'Pedir diagnóstico', 'Diagnóstico, recuperação e livros em dia'],
       ['societario', 'Direito Empresarial', 'Vai entrar um sócio novo na empresa.', 'Efeitos contábeis, tributários e societários tratados em separado se contradizem.', 'Colocamos contabilidade e jurídico na mesma análise e acompanhamos até o registro.', 'Decisão societária tomada com todos os efeitos avaliados.', 'Conversar sobre societário', 'Sócios, sucessão, contratos e registros'],
     ];
-    const sel = this.state.sel;
+    const sel = this.state.sel; const desk = this.state.w >= 1000;
     const items = D.map(([id, s, q, d, a, r, cta, tag], i) => ({
       id, s, q, d, a, r, cta, tag, n: String(i + 1).padStart(2, '0'), delay: i * 70,
       page: 'Servico.dc.html#' + id, contact: 'Contato.dc.html#' + id,
-      bg: i === sel ? '#00431C' : 'transparent', fg: i === sel ? '#F3F0E8' : '#00431C', arrow: i === sel ? 1 : 0,
-      pick: () => this.setState({ sel: i }),
+      on: i === sel ? 'true' : 'false', bg: i === sel ? '#00431C' : '#FAF8F3', fg: i === sel ? '#F3F0E8' : '#00431C', bd: i === sel ? '#00431C' : 'rgba(0,67,28,.2)', sh: i === sel ? '0 18px 40px -24px rgba(0,42,20,.6)' : 'none', dotBd: i === sel ? '#F3F0E8' : 'rgba(0,67,28,.45)', dotBg: i === sel ? '#F3F0E8' : '#00431C', dotS: i === sel ? 'scale(1)' : 'scale(0)', chev: i === sel ? (desk ? 'none' : 'rotate(90deg)') : 'none', inline: !desk && i === sel,
+      pick: () => { if (!desk && i === sel) return; this.setState({ sel: i }, () => { if (!desk && this._inl) setTimeout(() => { const r = this._inl.parentElement.getBoundingClientRect(); window.scrollTo({ top: r.top + scrollY - 90, behavior: 'smooth' }); }, 60); }); },
     }));
     return {
       items, cur: items[sel], stickyPos: this.state.w >= 1000 ? 'sticky' : 'static', stickyTop1: this.state.w >= 1000 ? '110px' : 'auto', stickyTop2: this.state.w >= 1000 ? '130px' : 'auto',
-      panelRef: el => { this.panel = el; },
+      idxCols: this.state.w >= 900 ? 'repeat(3,minmax(0,1fr))' : this.state.w >= 600 ? 'repeat(2,minmax(0,1fr))' : 'minmax(0,1fr)',
+      idxGap: this.state.w < 600 ? '20px' : 'clamp(32px,4vw,64px)', idxMin: this.state.w < 600 ? '0' : 'clamp(200px,18vw,260px)',
+      idxBtn: this.state.w < 600 ? '36px' : '44px', idxH: this.state.w < 600 ? '22px' : 'clamp(24px,2.2vw,32px)',
+      panelRef: el => { this.panel = el; }, desk, diagCols: desk ? 'minmax(0,1fr) minmax(0,1fr)' : 'minmax(0,1fr)',
+      hintText: desk ? 'Clique em uma das frases para ver, ao lado, como atuamos nesse caso.' : 'Toque em uma das frases para ver como atuamos nesse caso.',
+      arrowTop: 'calc(' + (sel * 16.66 + 8) + '% - 12px)', arrowRef: () => {},
+      inlineRef: el => { if (el && el !== this._inl) { this._inl = el; this.panel = el; } },
+      hintRef: el => { if (el && !el.__a) el.__a = el.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(5px)' }, { transform: 'translateY(0)' }], { duration: 1600, iterations: Infinity, easing: 'ease-in-out' }); },
       method: [
         { n: 'I', t: 'Entender a operação', d: 'Conhecemos a realidade da empresa, sua atividade, estrutura, objetivos e próximos movimentos.', k: 'Leitura de apoio · Abertura', o: 'O que decidir antes de registrar a empresa.' },
         { n: 'II', t: 'Organizar a rotina técnica', d: 'Estruturamos processos contábeis, fiscais, trabalhistas e societários conforme a legislação e a operação real.', k: 'Leitura de apoio · Rotina', o: 'Como ler o fechamento mensal da sua empresa.' },

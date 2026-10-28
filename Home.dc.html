@@ -11,12 +11,13 @@
   <title>Oliveira Contabilidade — Nós somamos.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"></link>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=Mulish:wght@400;500;600&amp;display=swap"></link>
-  <style>html,body{margin:0;background:#FAF8F3;color:#121A16;-webkit-font-smoothing:antialiased;} *{box-sizing:border-box;} a{color:#00431C;} a:hover{color:#002A14;} ::selection{background:#00431C;color:#F3F0E8;}</style>
+  <style>html,body{margin:0;background:#FAF8F3;color:#121A16;-webkit-font-smoothing:antialiased;} *{box-sizing:border-box;} a{color:#00431C;} a:hover{color:#002A14;} ::selection{background:#00431C;color:#F3F0E8;} @view-transition{navigation:auto;} ::view-transition-old(root){animation:omOut .42s cubic-bezier(.7,0,.84,0) both;} ::view-transition-new(root){animation:omIn .8s cubic-bezier(.16,.84,.24,1) both;} ::view-transition-group(site-header){animation-duration:.5s;} ::view-transition-old(site-header),::view-transition-new(site-header){animation-duration:.5s;} @keyframes omOut{to{opacity:0;transform:translateY(-20px);filter:blur(6px);}} @keyframes omIn{from{opacity:0;transform:translateY(28px);filter:blur(6px);}} @media (prefers-reduced-motion: reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none !important;}}</style>
 </helmet>
 <div style="background:#FAF8F3; overflow-x:clip;">
-  <dc-import name="Site Header" theme="dark" hint-size="100%,0px"></dc-import>
+  <dc-import name="Site Header" theme="{{ headerTheme }}" hint-size="100%,0px"></dc-import>
 
-  <section data-screen-label="Home · Hero" style="position:relative; min-height:100vh; background:#002A14; color:#F3F0E8; overflow:hidden; display:flex; flex-direction:column;">
+  <sc-if value="{{ heroVerde }}" hint-placeholder-val="{{ true }}">
+  <section data-screen-label="Home · Hero verde" style="position:relative; min-height:100vh; background:#002A14; color:#F3F0E8; overflow:hidden; display:flex; flex-direction:column;">
     <div style="position:absolute; inset:0; overflow:hidden;">
       <img src="assets/textura-profunda.png" alt="" data-reveal="scale" data-dur="2600" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"></img>
     </div>
@@ -26,30 +27,63 @@
       <div style="position:absolute; top:50%; left:0; right:0; height:1px; background:#9DAA8C;"></div>
       <div style="position:absolute; inset:18%; border:1px solid #9DAA8C; border-radius:50%;"></div>
     </div>
-    <div style="position:relative; flex:1; max-width:1440px; width:100%; margin:0 auto; padding:clamp(116px,15vh,170px) clamp(20px,4vw,56px) 48px; display:flex; flex-direction:column; justify-content:space-between; gap:64px;">
-      <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:#9DAA8C; display:flex; flex-wrap:wrap; gap:14px 22px;" data-reveal="fade" data-delay="400">
-        <span>Contabilidade</span><span>·</span><span>Fiscal</span><span>·</span><span>Tributário</span><span>·</span><span>Societário</span><span>·</span><span>Gestão</span>
-      </div>
-      <div>
-        <h1 style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(72px,13vw,220px); line-height:.9; letter-spacing:-.02em;">
-          <span style="display:block; overflow:hidden; padding-bottom:.12em;"><span data-reveal="rise" data-delay="300" data-dur="1500" style="display:block;">Nós</span></span>
-          <span style="display:block; overflow:hidden; padding-bottom:.12em;"><span data-reveal="rise" data-delay="460" data-dur="1500" style="display:block; font-style:italic; color:#C9D2BC;">somamos.</span></span>
+    <div style="position:relative; flex:1; max-width:1440px; width:100%; margin:0 auto; padding:clamp(140px,18vh,200px) clamp(20px,4vw,56px) 48px; display:flex; flex-direction:column; justify-content:space-between; gap:56px;">
+      <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:clamp(24px,3vh,36px);">
+        <div data-reveal="fade" data-delay="200" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#C9D2BC; display:flex; align-items:center; gap:16px;"><span style="width:40px; height:1px; background:#C9D2BC;"></span>Escritório de contabilidade empresarial</div>
+        <h1 style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(60px,7.4vw,124px); line-height:1.02; letter-spacing:-.02em;">
+          <span style="display:block; overflow:hidden; padding:.1em 0 .14em; margin:-.1em 0 0;"><span data-reveal="rise" data-delay="300" data-dur="1500" style="display:block;">Nós <em style="font-style:italic; color:#C9D2BC;">somamos.</em></span></span>
         </h1>
       </div>
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr)); gap:40px; align-items:end;">
-        <p data-reveal="up" data-delay="800" style="margin:0; font-family:'Mulish', sans-serif; font-size:clamp(18px,1.5vw,22px); line-height:1.6; color:rgba(243,240,232,.84); max-width:500px; text-wrap:pretty;">Tradição e inovação para o futuro do seu empreendimento. Contabilidade, fiscal, pessoal e jurídico empresarial trabalhando na mesma mesa.</p>
-        <div data-reveal="up" data-delay="950" style="display:flex; flex-wrap:wrap; gap:14px; justify-content:flex-end;">
-          <a href="Contato.dc.html" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; color:#00431C; background:#F3F0E8; padding:20px 30px 18px; border-radius:999px; transition:transform .4s;" style-hover="transform:translateY(-3px);">Conte sua situação</a>
-          <a href="Empresa.dc.html" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; color:#F3F0E8; border:1px solid rgba(243,240,232,.4); padding:19px 30px 17px; border-radius:999px; transition:background .4s;" style-hover="background:rgba(243,240,232,.1);">Conheça nossa história</a>
+        <p data-reveal="up" data-delay="600" style="margin:0; font-family:'Mulish', sans-serif; font-size:clamp(18px,1.5vw,22px); line-height:1.6; color:rgba(243,240,232,.86); max-width:540px; text-wrap:pretty;">Contabilidade, impostos, folha de pagamento e societário da sua empresa conduzidos por uma única equipe, com responsabilidade técnica e números que você entende.</p>
+        <div data-reveal="up" data-delay="750" style="display:flex; flex-wrap:wrap; gap:14px; justify-content:{{ heroSelf }};">
+          <a href="Contato.dc.html" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; color:#00431C; background:#F3F0E8; padding:20px 30px 18px; border-radius:999px; transition:transform .4s;" style-hover="transform:translateY(-3px); color:#00431C;">Conte sua situação</a>
+          <a href="Servicos.dc.html" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; color:#F3F0E8; border:1px solid rgba(243,240,232,.4); padding:19px 30px 17px; border-radius:999px; transition:background .4s;" style-hover="background:rgba(243,240,232,.1); color:#F3F0E8;">Ver serviços</a>
         </div>
       </div>
-      <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px 24px; font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:rgba(243,240,232,.6);" data-reveal="fade" data-delay="1200">
+      <div data-reveal="fade" data-delay="1000" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px 24px; font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:rgba(243,240,232,.6);">
         <span>Desde 1970</span>
         <span style="flex:1 1 80px; height:1px; background:rgba(243,240,232,.2); position:relative; overflow:hidden;"><span ref="{{ scanRef }}" style="position:absolute; left:0; top:0; height:1px; width:18%; background:#C9D2BC;"></span></span>
         <span>Barra da Tijuca · RJ</span>
       </div>
     </div>
   </section>
+  </sc-if>
+
+  <sc-if value="{{ heroBranco }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Home · Hero branco" style="position:relative; min-height:100vh; background:#FAF8F3; color:#00431C; overflow:hidden; display:flex; align-items:center;">
+    <div style="position:absolute; inset:0; background-image:repeating-linear-gradient(180deg, rgba(0,67,28,0) 0px, rgba(0,67,28,0) 55px, rgba(0,67,28,.07) 55px, rgba(0,67,28,.07) 56px); -webkit-mask-image:linear-gradient(90deg, rgba(0,0,0,.9), rgba(0,0,0,.15)); mask-image:linear-gradient(90deg, rgba(0,0,0,.9), rgba(0,0,0,.15)); pointer-events:none;"></div>
+    <img src="assets/ramo.png" alt="" data-parallax="-0.06" style="position:absolute; left:-6%; bottom:-12%; width:min(40vw,520px); opacity:.07; pointer-events:none;"></img>
+    <div style="position:relative; max-width:1440px; width:100%; margin:0 auto; padding:clamp(128px,17vh,170px) clamp(20px,4vw,56px) clamp(56px,8vh,88px); display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,500px),1fr)); gap:clamp(48px,6vw,96px); align-items:center;">
+      <div>
+        <div data-reveal="fade" data-delay="200" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#00431C; display:flex; align-items:center; gap:16px; margin-bottom:clamp(28px,4vh,40px);"><span style="width:40px; height:1px; background:#00431C;"></span>Contabilidade empresarial · Rio de Janeiro</div>
+        <h1 style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(56px,7vw,116px); line-height:1.02; letter-spacing:-.02em;">
+          <span style="display:block; overflow:hidden; padding:.1em 0 .14em; margin:-.1em 0 0;"><span data-reveal="rise" data-delay="300" data-dur="1500" style="display:block;">Nós <em style="font-style:italic;">somamos.</em></span></span>
+        </h1>
+        <p data-reveal="up" data-delay="600" style="margin:clamp(24px,3vh,32px) 0 0; font-family:'Mulish', sans-serif; font-size:clamp(18px,1.5vw,22px); line-height:1.6; color:#3D4A43; max-width:540px; text-wrap:pretty;">Contabilidade, tributos, pessoal e societário para empresas que querem decidir com números claros e prazos em dia.</p>
+        <div data-reveal="up" data-delay="750" style="display:flex; flex-wrap:wrap; gap:14px; margin-top:clamp(32px,4vh,44px);">
+          <a href="Contato.dc.html" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; color:#F3F0E8; background:#00431C; padding:20px 30px 18px; border-radius:999px; transition:transform .4s;" style-hover="transform:translateY(-3px); color:#F3F0E8;">Conte sua situação</a>
+          <a href="Servicos.dc.html" style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; color:#00431C; border:1px solid rgba(0,67,28,.4); padding:19px 30px 17px; border-radius:999px; transition:background .4s;" style-hover="background:rgba(0,67,28,.06);">Ver serviços</a>
+        </div>
+      </div>
+      <div style="position:relative; width:100%; max-width:560px; justify-self:{{ heroSelf }};">
+        <div data-natural="1" data-reveal="mask" data-delay="300" data-dur="1700" style="position:relative; aspect-ratio:4/5; overflow:hidden; background:#002A14;">
+          <img src="assets/foto-50.jpg" alt="Recepção da Oliveira Contabilidade" data-parallax="-0.06" style="position:absolute; left:0; top:-6%; width:100%; height:112%; object-fit:cover;"></img>
+        </div>
+        <div data-reveal="scale" data-delay="900" style="position:absolute; left:clamp(-56px,-4vw,-16px); top:clamp(24px,8%,64px); width:clamp(120px,11vw,156px); aspect-ratio:1;">
+          <div data-spin="30000" style="position:absolute; inset:0;">
+            <svg viewBox="0 0 200 200" style="width:100%; height:100%; display:block;"><defs><path id="ringPath" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"></path></defs><circle cx="100" cy="100" r="99" fill="#00431C"></circle><text style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:15px; letter-spacing:4.2px; text-transform:uppercase;" fill="#F3F0E8"><textPath href="#ringPath">Contábil · Fiscal · Pessoal · Societário ·</textPath></text></svg>
+          </div>
+          <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(40px,3.6vw,52px); color:#F3F0E8; line-height:1;">+</div>
+        </div>
+        <div data-reveal="up" data-delay="1100" style="position:absolute; right:clamp(-32px,-2vw,-8px); bottom:clamp(24px,8%,56px); background:#FAF8F3; padding:20px 24px; box-shadow:0 24px 48px -24px rgba(0,42,20,.35); max-width:260px;">
+          <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; font-size:10px; color:#5B6B62; margin-bottom:8px;">Responsabilidade técnica</div>
+          <div style="font-family:'Josefin Sans', sans-serif; font-weight:400; font-size:20px; line-height:1.25; color:#00431C;">CRC/RJ 004936/O-0</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
 
   <section data-screen-label="Home · Manifesto" style="position:relative; padding:clamp(64px,10vw,140px) clamp(20px,4vw,56px); max-width:1440px; margin:0 auto;">
     <div style="display:flex; flex-wrap:wrap; gap:40px 48px;">
@@ -85,8 +119,8 @@
         <div>
           <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#C9D2BC; margin-bottom:28px;" data-reveal="fade">(02) &#160;Situações reais</div>
           <h2 style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(34px,5.6vw,88px); line-height:1.08; letter-spacing:-.02em;">
-            <span style="display:block; overflow:hidden; padding-bottom:.12em;"><span data-reveal="rise" style="display:block;">Toda frente começa</span></span>
-            <span style="display:block; overflow:hidden; padding-bottom:.12em;"><span data-reveal="rise" data-delay="120" style="display:block; font-style:italic; color:#C9D2BC;">com uma frase.</span></span>
+            <span style="display:block; overflow:hidden; padding:.1em 0 .14em; margin:-.1em 0 0;"><span data-reveal="rise" style="display:block;">Toda frente começa</span></span>
+            <span style="display:block; overflow:hidden; padding:.1em 0 .14em; margin:-.1em 0 0;"><span data-reveal="rise" data-delay="120" style="display:block; font-style:italic; color:#C9D2BC;">com uma frase.</span></span>
           </h2>
         </div>
         <p data-reveal="up" data-delay="200" style="margin:0; font-family:'Mulish', sans-serif; font-size:clamp(18px,1.5vw,21px); line-height:1.6; color:rgba(243,240,232,.8); max-width:460px; justify-self:end; text-wrap:pretty;">É assim que as conversas costumam chegar até nós. Cada uma aponta para uma das seis frentes do escritório.</p>
@@ -109,9 +143,9 @@
     </div>
   </section>
 
-  <section data-screen-label="Home · Escritório" style="position:relative; height:clamp(280px,60vh,680px); overflow:hidden; background:#002A14;">
-    <div data-reveal="mask" data-dur="1600" style="position:absolute; inset:0; overflow:hidden;">
-      <img src="assets/foto-50.jpg" alt="Recepção da Oliveira Contabilidade" data-parallax="-0.18" style="position:absolute; left:0; top:-12%; width:100%; height:124%; object-fit:cover;"></img>
+  <section data-screen-label="Home · Escritório" style="position:relative; height:{{ ofH }}; overflow:hidden; background:#002A14;">
+    <div data-reveal="mask" data-dur="1600" style="position:{{ ofPos }}; inset:0; overflow:hidden;">
+      <img src="assets/foto-50.jpg" alt="Recepção da Oliveira Contabilidade" data-parallax="{{ ofPx }}" style="position:{{ ofPos }}; display:block; left:0; top:{{ ofTop }}; width:100%; height:{{ ofIH }}; object-fit:cover;"></img>
     </div>
     <div style="position:absolute; left:clamp(20px,4vw,56px); bottom:40px; font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#F3F0E8; background:rgba(0,42,20,.7); padding:12px 16px 10px;" data-reveal="fade" data-delay="600">Sede · Barra da Tijuca</div>
   </section>
@@ -121,16 +155,17 @@
       <div>
         <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#00431C; margin-bottom:28px;" data-reveal="fade">(03) &#160;Método</div>
         <h2 style="margin:0; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(34px,5.6vw,88px); line-height:1.08; letter-spacing:-.02em; color:#00431C;">
-          <span style="display:block; overflow:hidden; padding-bottom:.12em;"><span data-reveal="rise" style="display:block;">Uma leitura contínua,</span></span>
-          <span style="display:block; overflow:hidden; padding-bottom:.12em;"><span data-reveal="rise" data-delay="120" style="display:block; font-style:italic;">não tarefas soltas.</span></span>
+          <span style="display:block; overflow:hidden; padding:.1em 0 .14em; margin:-.1em 0 0;"><span data-reveal="rise" style="display:block;">Uma leitura contínua,</span></span>
+          <span style="display:block; overflow:hidden; padding:.1em 0 .14em; margin:-.1em 0 0;"><span data-reveal="rise" data-delay="120" style="display:block; font-style:italic;">não tarefas soltas.</span></span>
         </h2>
       </div>
       <p data-reveal="up" data-delay="200" style="margin:0; font-family:'Mulish', sans-serif; font-size:clamp(18px,1.5vw,21px); line-height:1.6; color:#3D4A43; max-width:460px; justify-self:end; text-wrap:pretty;">Quatro movimentos que se repetem enquanto a empresa existe — e que se ajustam a cada nova fase dela.</p>
     </div>
+    <sc-if value="{{ stepsH }}" hint-placeholder-val="{{ true }}">
     <div data-draw-box="1" style="position:relative;">
       <div style="height:1px; background:rgba(0,67,28,.15);"></div>
       <div data-draw="x" style="position:absolute; top:0; left:0; right:0; height:1px; background:#00431C; transform-origin:0 50%; scale:0 1;"></div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:0;">
+      <div style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:0;">
         <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
           <div data-step="1" style="position:relative; padding:48px 32px 0 0; transition:opacity .6s;">
             <span style="position:absolute; top:-5px; left:0; width:9px; height:9px; border-radius:50%; background:#00431C;"></span>
@@ -141,18 +176,35 @@
         </sc-for>
       </div>
     </div>
+    </sc-if>
+    <sc-if value="{{ stepsV }}" hint-placeholder-val="{{ false }}">
+    <div data-draw-box="1" style="position:relative; padding-left:28px;">
+      <div style="position:absolute; left:4px; top:8px; bottom:8px; width:1px; background:rgba(0,67,28,.15);"></div>
+      <div data-draw="y" style="position:absolute; left:4px; top:8px; bottom:8px; width:1px; background:#00431C; transform-origin:50% 0; scale:1 0;"></div>
+      <div style="display:flex; flex-direction:column; gap:36px;">
+        <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+          <div data-step="1" style="position:relative; transition:opacity .6s;">
+            <span style="position:absolute; left:-28px; top:6px; width:9px; height:9px; border-radius:50%; background:#00431C;"></span>
+            <div style="font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:18px; line-height:1; color:#5B6B62; margin-bottom:12px;">{{ st.n }}</div>
+            <h3 style="margin:0 0 10px; font-family:'Josefin Sans', sans-serif; font-weight:400; font-size:24px; line-height:1.2; color:#00431C;">{{ st.t }}</h3>
+            <p style="margin:0; font-family:'Mulish', sans-serif; font-size:16px; line-height:1.65; color:#3D4A43;">{{ st.r }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    </sc-if>
   </section>
 
   <section data-screen-label="Home · Liderança" style="background:#F3F0E8; padding:clamp(64px,8vw,120px) clamp(20px,4vw,56px);">
     <div style="max-width:1440px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr)); gap:clamp(40px,5vw,88px); align-items:center;">
-      <div style="position:relative; aspect-ratio:4/5; overflow:hidden; background:#002A14;" data-reveal="mask" data-dur="1600">
+      <div data-natural="1" style="position:relative; aspect-ratio:4/5; overflow:hidden; background:#002A14;" data-reveal="mask" data-dur="1600">
         <img src="assets/foto-02.jpg" alt="Felipe Farias de Oliveira da Costa" data-parallax="-0.08" style="position:absolute; left:0; top:-6%; width:100%; height:112%; object-fit:cover;"></img>
       </div>
       <div>
         <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#00431C; margin-bottom:28px;" data-reveal="fade">(04) &#160;Quem assina</div>
         <h2 style="margin:0 0 36px; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(34px,5.6vw,88px); line-height:1.08; letter-spacing:-.02em; color:#00431C;">
-          <span style="display:block; overflow:hidden; padding-bottom:.12em;"><span data-reveal="rise" style="display:block;">Uma liderança</span></span>
-          <span style="display:block; overflow:hidden; padding-bottom:.12em;"><span data-reveal="rise" data-delay="120" style="display:block; font-style:italic;">que está na sala.</span></span>
+          <span style="display:block; overflow:hidden; padding:.1em 0 .14em; margin:-.1em 0 0;"><span data-reveal="rise" style="display:block;">Uma liderança</span></span>
+          <span style="display:block; overflow:hidden; padding:.1em 0 .14em; margin:-.1em 0 0;"><span data-reveal="rise" data-delay="120" style="display:block; font-style:italic;">que está na sala.</span></span>
         </h2>
         <p data-reveal="up" data-delay="200" style="margin:0 0 48px; font-family:'Mulish', sans-serif; font-size:clamp(18px,1.5vw,21px); line-height:1.6; color:#3D4A43; max-width:520px; text-wrap:pretty;">Contador e advogado, na rotina contábil desde 2003. A responsabilidade técnica do escritório tem nome, registro e presença nas reuniões.</p>
         <div data-reveal="up" data-delay="300" style="display:flex; flex-direction:column; gap:6px; padding:28px 0; border-top:1px solid rgba(0,67,28,.2); border-bottom:1px solid rgba(0,67,28,.2); margin-bottom:40px;">
@@ -170,7 +222,7 @@
     <div style="position:relative; max-width:980px; margin:0 auto;">
       <div style="font-family:'Josefin Sans', sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#00431C; margin-bottom:32px;" data-reveal="fade">(05) &#160;Comece por aqui</div>
       <h2 style="margin:0 0 28px; font-family:'Josefin Sans', sans-serif; font-weight:300; font-size:clamp(34px,5.6vw,88px); line-height:1.08; letter-spacing:-.02em; color:#00431C;">
-        <span style="display:block; overflow:hidden; padding-bottom:.12em;"><span data-reveal="rise" style="display:block;">Qual é o assunto <em>de hoje?</em></span></span>
+        <span style="display:block; overflow:hidden; padding:.1em 0 .14em; margin:-.1em 0 0;"><span data-reveal="rise" style="display:block;">Qual é o assunto <em>de hoje?</em></span></span>
       </h2>
       <p data-reveal="up" data-delay="150" style="margin:0 auto 56px; font-family:'Mulish', sans-serif; font-size:clamp(18px,1.5vw,21px); line-height:1.6; color:#3D4A43; max-width:560px;">Escolha um tema e siga para uma conversa guiada de poucos passos.</p>
       <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;">
@@ -184,12 +236,42 @@
   <dc-import name="Site Footer" hint-size="100%,640px"></dc-import>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script>
+<script type="text/x-dc" data-dc-script data-props="{&quot;hero&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;verde&quot;,&quot;branco&quot;],&quot;default&quot;:&quot;verde&quot;,&quot;tsType&quot;:&quot;'verde'|'branco'&quot;,&quot;section&quot;:&quot;Banner principal&quot;}}">
 class Component extends DCLogic {
+  state = { tick: 0, wi: 0, pwi: -1, w: typeof innerWidth !== 'undefined' ? innerWidth : 1440 };
+  WORDS = ['clareza.', 'segurança.', 'previsibilidade.', 'tempo.'];
   componentDidMount() {
     import('./motion.js').then(m => { m.initMotion(); setTimeout(() => m.initMotion(), 600); });
+    this.onR = () => this.setState({ w: innerWidth }); addEventListener('resize', this.onR);
+    this.t0 = setTimeout(() => { this.iv = setInterval(() => this.setState(s => ({ tick: s.tick >= 8 ? 0 : s.tick + 1 })), 1000); }, 1400);
+
+  }
+  componentWillUnmount() { removeEventListener('resize', this.onR); clearTimeout(this.t0); clearInterval(this.iv); clearTimeout(this.iw); }
+  DUR = 3200;
+  cycle() { clearTimeout(this.iw); this.iw = setTimeout(() => this.pick((this.state.wi + 1) % this.WORDS.length), this.DUR); }
+  pick(i) { if (i === this.state.wi) return; this.setState(s => ({ pwi: s.wi, wi: i })); this.cycle(); }
+  timer() {
+    const ease = 'cubic-bezier(.16,.84,.24,1)';
+    const tl = this.line && this.line.querySelector('[data-timer]');
+    if (tl) { tl.getAnimations().forEach(a => a.cancel()); tl.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: this.DUR, easing: 'linear', fill: 'forwards' }); }
+    const bar = this.bars && this.bars.querySelectorAll('[data-bar]')[this.state.wi];
+    if (bar) { bar.getAnimations().forEach(a => a.cancel()); bar.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: this.DUR, easing: 'linear', fill: 'forwards' }); }
+    if (this.bars) this.bars.querySelectorAll('[data-bar]').forEach((b, i) => { if (i !== this.state.wi) b.getAnimations().forEach(a => a.cancel()); });
+  }
+  componentDidUpdate(_, ps) {
+    if (ps.wi !== this.state.wi) {
+      const ease = 'cubic-bezier(.16,.84,.24,1)';
+      if (this.prev) this.prev.querySelectorAll('[data-l]').forEach((l, i) => l.animate([{ transform: 'none', opacity: 1, filter: 'blur(0)' }, { transform: 'translateY(-105%) rotate(-6deg)', opacity: 0, filter: 'blur(4px)' }], { duration: 620, delay: i * 22, easing: 'cubic-bezier(.7,0,.84,0)', fill: 'both' }));
+      if (this.word) this.word.querySelectorAll('[data-l]').forEach((l, i) => l.animate([{ transform: 'translateY(110%) rotate(8deg)', opacity: 0, filter: 'blur(6px)' }, { transform: 'none', opacity: 1, filter: 'blur(0)' }], { duration: 900, delay: 260 + i * 34, easing: ease, fill: 'both' }));
+      this.timer();
+      if (this.plus) this.plus.animate([{ rotate: '-90deg', scale: '.6' }, { rotate: '0deg', scale: '1' }], { duration: 900, easing: 'cubic-bezier(.16,.84,.24,1)' });
+    }
   }
   renderVals() {
+    const branco = (this.props.hero ?? 'verde') === 'branco';
+    const tick = this.state.tick, N = 5, done = Math.min(tick, N), closed = tick > N;
+    const L = [['Conciliação bancária', 'Contábil'], ['Apuração de tributos', 'Fiscal'], ['Folha de pagamento', 'Pessoal'], ['Obrigações acessórias', 'Fiscal'], ['Relatório gerencial', 'Contábil']];
+    const mo = new Date().toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
     const S = [
       ['constituicao', 'Vamos abrir a empresa. Por onde começamos?', 'Constituição de Empresas'],
       ['tributario', 'A carga tributária surpreende todo mês.', 'Tributário Empresarial'],
@@ -200,12 +282,20 @@ class Component extends DCLogic {
     ];
     const chipL = ['Abrir uma empresa', 'Rever impostos', 'Organizar a contabilidade', 'Folha e pessoal', 'Regularizar pendências', 'Sócios e contratos'];
     return {
+      heroSelf: this.state.w >= 1080 ? 'end' : 'start', ofH: this.state.w < 768 ? 'auto' : 'clamp(280px,60vh,680px)', ofPos: this.state.w < 768 ? 'relative' : 'absolute', ofTop: this.state.w < 768 ? '0' : '-12%', ofIH: this.state.w < 768 ? 'auto' : '124%', ofPx: this.state.w < 768 ? '0' : '-0.18', stepsH: this.state.w >= 900, stepsV: this.state.w < 900, heroVerde: !branco, scanRef: el => { if (el && !el.__a) el.__a = el.animate([{ transform: 'translateX(-100%)' }, { transform: 'translateX(560%)' }], { duration: 3200, iterations: Infinity, easing: 'cubic-bezier(.6,0,.2,1)' }); }, heroBranco: branco, headerTheme: branco ? 'light' : 'dark',
+      month: mo.charAt(0).toUpperCase() + mo.slice(1),
+      statusLabel: closed ? 'Concluído' : 'Em andamento', pillBg: closed ? '#C9D2BC' : 'rgba(243,240,232,.1)', pillFg: closed ? '#002A14' : '#F3F0E8',
+      ledger: L.map(([t, a], i) => ({ t, a, mark: i < done ? '✓' : '', bg: i < done ? '#C9D2BC' : 'transparent', bd: i < done ? '#C9D2BC' : 'rgba(243,240,232,.35)', op: i < done ? 1 : 0.6 })),
+      pct: 'scaleX(' + (done / N) + ')', sumOp: closed ? 1 : 0, sumY: closed ? 'none' : 'translateY(12px)',
+      curL: this.WORDS[this.state.wi].split(''), prevL: this.state.pwi < 0 ? [] : this.WORDS[this.state.pwi].split(''),
+      wordNum: String(this.state.wi + 1).padStart(2, '0'),
+      bars: this.WORDS.map((w, i) => ({ w, tf: i < this.state.wi ? 'scaleX(1)' : 'scaleX(0)', go: () => this.pick(i) })),
+      wordRef: el => { this.word = el; }, prevRef: el => { this.prev = el; }, lineRef: el => { this.line = el; }, barsRef: el => { this.bars = el; }, plusRef: el => { this.plus = el; },
       words: 'Acreditamos que podemos somar. Somar de forma simples e em todos os sentidos, pois no final das contas podemos fazer mais juntos.'.split(' '),
       stats: [
         { k: 'Origem', n: 1970, v: '1970', suf: '', t: 'Ano em que começa a prática contábil que deu origem ao escritório.', delay: 0 },
-        { k: 'Liderança', n: 20, v: '20+', suf: '+', t: 'Anos de experiência de quem conduz a Oliveira.', delay: 120 },
-        { k: 'Equipe', n: 28, v: '28', suf: '', t: 'Profissionais dedicados, entre técnicos e especialistas.', delay: 240 },
-        { k: 'Clientes', n: 270, v: '270+', suf: '+', t: 'Empresas atendidas em diferentes estados.', delay: 360 },
+        { k: 'Clientes', n: 270, v: '270+', suf: '+', t: 'Empresas atendidas em diferentes estados.', delay: 120 },
+        { k: 'Liderança', n: 20, v: '20+', suf: '+', t: 'Anos de experiência de quem conduz a Oliveira.', delay: 240 },
       ],
       situations: S.map(([id, q, s], i) => ({ n: String(i + 1).padStart(2, '0'), q, s, href: 'Servico.dc.html#' + id, delay: i * 80 })),
       steps: [
@@ -215,7 +305,6 @@ class Component extends DCLogic {
         { n: 'IV', t: 'Acompanhar as decisões', r: 'Mais previsibilidade para conduzir o negócio.' },
       ],
       chips: S.map(([id], i) => ({ l: chipL[i], href: 'Contato.dc.html#' + id, delay: i * 70 })),
-      scanRef: el => { if (el && !el.__a) el.__a = el.animate([{ transform: 'translateX(-100%)' }, { transform: 'translateX(560%)' }], { duration: 3200, iterations: Infinity, easing: 'cubic-bezier(.6,0,.2,1)' }); },
     };
   }
 }
