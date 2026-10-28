@@ -89,20 +89,23 @@ export function initMotion(root = document) {
   if (!window.__omNat) { window.__omNat = 1; addEventListener('resize', () => natural()); }
   if (!window.__omNav) {
     window.__omNav = 1;
-    const native = 'onpagereveal' in window || (CSS && CSS.supports && CSS.supports('view-transition-name: a') && 'onpageswap' in window);
-    if (!native) {
-      document.documentElement.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 600, easing: 'cubic-bezier(.16,.84,.24,1)' });
-      document.addEventListener('click', e => {
-        const a = e.target.closest && e.target.closest('a[href]'); if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || a.target === '_blank') return;
-        const url = new URL(a.getAttribute('href'), location.href);
-        if (url.origin !== location.origin || !/\.dc\.html$/.test(url.pathname) || (url.pathname === location.pathname)) return;
-        e.preventDefault();
-        const main = document.body.firstElementChild;
-        const anim = (main || document.body).animate([{ opacity: 1, transform: 'none', filter: 'blur(0)' }, { opacity: 0, transform: 'translateY(-16px)', filter: 'blur(6px)' }], { duration: 380, easing: 'cubic-bezier(.7,0,.84,0)', fill: 'forwards' });
-        anim.onfinish = () => { location.href = url.href; };
-      });
-      addEventListener('pageshow', ev => { if (ev.persisted) document.body.getAnimations().forEach(x => x.cancel()); });
+    const parts = () => [...document.querySelectorAll('section, main, footer')].filter(el => !el.closest('header') && !el.parentElement.closest('section, main, footer'));
+    if (!reduce()) {
+      const veil = document.createElement('div');
+      veil.style.cssText = 'position:fixed;inset:0;z-index:40;pointer-events:none;background:inherit;';
+      requestAnimationFrame(() => parts().forEach((p, i) => p.animate([{ opacity: 0, transform: 'translateY(24px)' }, { opacity: 1, transform: 'none' }], { duration: 800, delay: i ? 120 : 0, easing: 'cubic-bezier(.16,.84,.24,1)', fill: 'backwards' })));
     }
+    document.addEventListener('click', e => {
+      const a = e.target.closest && e.target.closest('a[href]'); if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button || a.target === '_blank') return;
+      const url = new URL(a.getAttribute('href'), location.href);
+      if (url.origin !== location.origin || !/\.dc\.html$/.test(url.pathname) || url.pathname === location.pathname) return;
+      e.preventDefault();
+      if (reduce()) { location.href = url.href; return; }
+      const ps = parts(); let done = false; const go = () => { if (!done) { done = true; location.href = url.href; } };
+      ps.forEach(p => p.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(-16px)' }], { duration: 360, easing: 'cubic-bezier(.7,0,.84,0)', fill: 'forwards' }));
+      setTimeout(go, 370);
+    });
+    addEventListener('pageshow', ev => { if (ev.persisted) parts().forEach(p => p.getAnimations().forEach(x => x.cancel())); });
   }
   if (!window.__omScroll) {
     window.__omScroll = true;
